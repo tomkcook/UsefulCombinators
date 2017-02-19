@@ -20,16 +20,38 @@ data:extend({
       {"decider-combinator", 1}
     },
     result = "counting-combinator"
-  }--[[,
+  },
   {
     type = "recipe",
-    name = "pulse-decider-combinator",
+    name = "random-combinator",
     enabled = "false",
     ingredients =
     {
-      {"copper-cable", 2},
+      {"advanced-circuit", 1},
+      {"constant-combinator", 1}
+    },
+    result = "random-combinator"
+  }--[[,
+  {
+    type = "recipe",
+    name = "logic-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"advanced-circuit", 1},
       {"decider-combinator", 1}
     },
-    result = "counting-combinator"
-  }]]
+    result = "logic-combinator"
+  }]],
+  {
+    type = "recipe",
+    name = "comparator-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"constant-combinator", 1},
+      {"decider-combinator", 1}
+    },
+    result = "comparator-combinator"
+  }
 })
