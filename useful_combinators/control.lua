@@ -185,12 +185,6 @@ classes["comparator-combinator"] = {
   end
 }
 
---[[classes["logic-combinator"] = {
-  on_place = function(entity) return { entity = entity } end,
-  on_destroy = function() end,
-  on_tick = function(object) end
-}]]
-
 function parse(a, op, b)
   if op == "lt-signal" then
     if a < b then
@@ -286,9 +280,9 @@ local function load_data()
   data = global.data
 end
 
-local function configuration_changed(data)
-  if data.mod_changes then
-    local changes = data.mod_changes["UsefulCombinators"]
+local function configuration_changed(cfg)
+  if cfg.mod_changes then
+    local changes = cfg.mod_changes["UsefulCombinators"]
     if changes then
       init()
     end
