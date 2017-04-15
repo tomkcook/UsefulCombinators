@@ -1,8 +1,8 @@
 local data = {}
 local classes = {}
 
-local function save()
-  global.data = data
+function save()
+  global.uc_data = data
 end
 
 classes["timer-combinator"] = {
@@ -235,16 +235,16 @@ function get_count(control, signal)
   return val
 end
 
-local function entity_built(event)
+function entity_built(event)
   if classes[event.created_entity.name] ~= nil then
-    local tab = data[event.created_entity.name]
-    table.insert(tab, classes[event.created_entity.name].on_place(event.created_entity))
-    data[event.created_entity.name] = tab
-    save()
+      local tab = data[event.created_entity.name]
+      table.insert(tab, classes[event.created_entity.name].on_place(event.created_entity))
+      data[event.created_entity.name] = tab
+      save()
   end
 end
 
-local function entity_removed(event)
+function entity_removed(event)
   if classes[event.entity.name] ~= nil then
     for k,v in ipairs(data[event.entity.name]) do
       if v.entity == event.entity then
@@ -259,30 +259,24 @@ local function entity_removed(event)
   end
 end
 
-local function tick()
+function tick()
   for k,v in pairs(classes) do
-    if data and data[k] then
-      for q,i in pairs(data[k]) do
-        if i.entity.valid then
-          v.on_tick(i, q)
-        end
+    for q,i in pairs(data[k]) do
+      if i.entity.valid then
+        v.on_tick(i, q)
       end
     end
   end
 end
 
-local function init()
-  data = global.data or {}
+function init()
+  data = global.uc_data or {}
   for k, v in pairs(classes) do
     data[k] = data[k] or {}
   end
 end
 
-local function load_data()
-  data = global.data
-end
-
-local function configuration_changed(cfg)
+function configuration_changed(cfg)
   if cfg.mod_changes then
     local changes = cfg.mod_changes["UsefulCombinators"]
     if changes then
@@ -292,7 +286,7 @@ local function configuration_changed(cfg)
 end
 
 script.on_init(init)
-script.on_load(load_data)
+script.on_load(init)
 script.on_configuration_changed(configuration_changed)
 script.on_event(defines.events.on_tick, tick)
 script.on_event(defines.events.on_built_entity, entity_built)
