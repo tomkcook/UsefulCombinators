@@ -53,5 +53,27 @@ data:extend({
       {"decider-combinator", 1}
     },
     result = "comparator-combinator"
+  },
+  {
+    type = "recipe",
+    name = "min-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"advanced-circuit", 1},
+      {"decider-combinator", 1}
+    },
+    result = "min-combinator"
+  },
+  {
+    type = "recipe",
+    name = "max-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"advanced-circuit", 1},
+      {"decider-combinator", 1}
+    },
+    result = "max-combinator"
   }
 })
