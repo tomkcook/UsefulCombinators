@@ -199,9 +199,9 @@ classes["min-combinator"] = {
           if p1.signal.name then
             local signals = get_signals(control)
             local signal = {type = "virtual", name = "blank"}
-            local count = -math.huge
+            local count = math.huge
             for k,v in pairs(signals) do
-              count = math.max(count, v.count)
+              count = math.min(count, v.count)
               if count == v.count then
                 signal = v.signal
               end
