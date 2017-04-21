@@ -269,6 +269,282 @@ classes["max-combinator"] = {
   end
 }
 
+classes["and-gate-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[3].signal.name then
+        local p1,p2 = params[1], params[2]
+        if control.enabled then
+          local slots = {}
+          local c1,c2 = 0,0
+          if p1.signal.name then
+            table.insert(slots, {signal = p1.signal, count = 0, index = 1})
+            c1 = get_count(control, p1.signal)
+          end
+          if p2.signal.name then
+            table.insert(slots, {signal = p2.signal, count = 0, index = 2})
+            c2 = get_count(control, p2.signal)
+          end
+          if (c1 > 0) and (c2 > 0) and (c1 == c2) then
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 3})
+          else
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3}
+          }
+        }
+      end
+    end
+  end
+}
+
+classes["nand-gate-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[3].signal.name then
+        local p1,p2 = params[1], params[2]
+        if control.enabled then
+          local slots = {}
+          local c1,c2 = 0,0
+          if p1.signal.name then
+            table.insert(slots, {signal = p1.signal, count = 0, index = 1})
+            c1 = get_count(control, p1.signal)
+          end
+          if p2.signal.name then
+            table.insert(slots, {signal = p2.signal, count = 0, index = 2})
+            c2 = get_count(control, p2.signal)
+          end
+          if (c1 > 0) and (c2 > 0) and (c1 == c2) then
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3})
+          else
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 3})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3}
+          }
+        }
+      end
+    end
+  end
+}
+
+classes["nor-gate-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[3].signal.name then
+        local p1,p2 = params[1], params[2]
+        if control.enabled then
+          local slots = {}
+          local c1,c2 = 0,0
+          if p1.signal.name then
+            table.insert(slots, {signal = p1.signal, count = 0, index = 1})
+            c1 = get_count(control, p1.signal)
+          end
+          if p2.signal.name then
+            table.insert(slots, {signal = p2.signal, count = 0, index = 2})
+            c2 = get_count(control, p2.signal)
+          end
+          if (c1 >= 1) or (c2 >= 1) then
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3})
+          else
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 3})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3}
+          }
+        }
+      end
+    end
+  end
+}
+
+classes["not-gate-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[2].signal.name then
+        local p1 = params[1]
+        if control.enabled then
+          local slots = {}
+          local c1 = 0
+          if p1.signal.name then
+            table.insert(slots, {signal = p1.signal, count = 0, index = 1})
+            c1 = get_count(control, p1.signal)
+          end
+          if (c1 > 0) then
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 2})
+          else
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 2})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 2}
+          }
+        }
+      end
+    end
+  end
+}
+
+classes["or-gate-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[3].signal.name then
+        local p1,p2 = params[1], params[2]
+        if control.enabled then
+          local slots = {}
+          local c1,c2 = 0,0
+          if p1.signal.name then
+            table.insert(slots, {signal = p1.signal, count = 0, index = 1})
+            c1 = get_count(control, p1.signal)
+          end
+          if p2.signal.name then
+            table.insert(slots, {signal = p2.signal, count = 0, index = 2})
+            c2 = get_count(control, p2.signal)
+          end
+          if (c1 >= 1) or (c2 >= 1) then
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 3})
+          else
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3}
+          }
+        }
+      end
+    end
+  end
+}
+
+classes["xnor-gate-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[3].signal.name then
+        local p1,p2 = params[1], params[2]
+        if control.enabled then
+          local slots = {}
+          local c1,c2 = 0,0
+          if p1.signal.name then
+            table.insert(slots, {signal = p1.signal, count = 0, index = 1})
+            c1 = get_count(control, p1.signal)
+          end
+          if p2.signal.name then
+            table.insert(slots, {signal = p2.signal, count = 0, index = 2})
+            c2 = get_count(control, p2.signal)
+          end
+          if (c1 == c2) then
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 3})
+          else
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3}
+          }
+        }
+      end
+    end
+  end
+}
+
+classes["xor-gate-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[3].signal.name then
+        local p1,p2 = params[1], params[2]
+        if control.enabled then
+          local slots = {}
+          local c1,c2 = 0,0
+          if p1.signal.name then
+            table.insert(slots, {signal = p1.signal, count = 0, index = 1})
+            c1 = get_count(control, p1.signal)
+          end
+          if p2.signal.name then
+            table.insert(slots, {signal = p2.signal, count = 0, index = 2})
+            c2 = get_count(control, p2.signal)
+          end
+          if (c1 == c2) then
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3})
+          else
+            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 3})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3}
+          }
+        }
+      end
+    end
+  end
+}
+
 function parse(a, op, b)
   if op == "lt-signal" then
     if a < b then
