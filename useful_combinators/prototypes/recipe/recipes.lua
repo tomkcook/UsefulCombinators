@@ -31,18 +31,7 @@ data:extend({
       {"constant-combinator", 1}
     },
     result = "random-combinator"
-  }--[[,
-  {
-    type = "recipe",
-    name = "logic-combinator",
-    enabled = "false",
-    ingredients =
-    {
-      {"advanced-circuit", 1},
-      {"decider-combinator", 1}
-    },
-    result = "logic-combinator"
-  }]],
+  },
   {
     type = "recipe",
     name = "comparator-combinator",
