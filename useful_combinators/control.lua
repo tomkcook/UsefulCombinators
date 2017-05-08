@@ -104,7 +104,7 @@ classes["random-combinator"] = {
           if maximum <= minimum then maximum = minimum + 1 end
           if ticks < 1 then ticks = 1 end
           if ticks > 60 then ticks = 60 end
-          if get_count(control, "output-signal") >= 1 then
+          if get_count(control, {name = "output-signal", type = "virtual"}) >= 1 then
             count = math.random(minimum,maximum)
           end
           if (game.tick % ticks) == 0 then
