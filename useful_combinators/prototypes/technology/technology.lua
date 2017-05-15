@@ -24,6 +24,10 @@ data:extend({
       },
       {
         type = "unlock-recipe",
+        recipe = "converter-combinator"
+      },
+      {
+        type = "unlock-recipe",
         recipe = "min-combinator"
       },
       {

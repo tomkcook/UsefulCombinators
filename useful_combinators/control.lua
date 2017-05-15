@@ -559,6 +559,36 @@ classes["xor-gate-combinator"] = {
   end
 }
 
+classes["converter-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[1].signal.name then
+        local p1,p2 = params[1], params[2]
+        if control.enabled then
+          local slots = {}
+          if p1.signal.name then
+            table.insert(slots, {signal = p1.signal, count = 0, index = 1})
+          end
+          if p2.signal.name then
+            table.insert(slots, {signal = p2.signal, count = get_count(control, p1.signal), index = 2})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {}
+        }
+      end
+    end
+  end
+}
+
 function parse(a, op, b)
   if op == "lt-signal" then
     if a < b then

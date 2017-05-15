@@ -45,6 +45,17 @@ data:extend({
   },
   {
     type = "recipe",
+    name = "converter-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"constant-combinator", 1},
+      {"electronic-circuit", 2}
+    },
+    result = "converter-combinator"
+  },
+  {
+    type = "recipe",
     name = "min-combinator",
     enabled = "false",
     ingredients =

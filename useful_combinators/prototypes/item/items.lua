@@ -52,6 +52,16 @@ data:extend(
   },
   {
     type = "item",
+    name = "converter-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/converter-combinator.png",
+    flags = { "goes-to-quickbar" },
+    subgroup = "circuit-network",
+    place_result="converter-combinator",
+    order = "b[combinators]-u[converter-combinator]",
+    stack_size= 10,
+  },
+  {
+    type = "item",
     name = "min-combinator",
     icon = "__UsefulCombinators__/graphics/icons/min-combinator.png",
     flags = { "goes-to-quickbar" },
