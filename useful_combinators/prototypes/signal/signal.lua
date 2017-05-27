@@ -111,5 +111,12 @@ data:extend(
     icon = "__UsefulCombinators__/graphics/icons/signal/blank.png",
     subgroup = "virtual-signal",
     order = "u[blank]"
+  },
+  {
+    type = "virtual-signal",
+    name = "minus-one-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/minus-one-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[minus-one]"
   }
 })
