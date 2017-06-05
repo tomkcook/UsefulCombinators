@@ -118,5 +118,12 @@ data:extend(
     icon = "__UsefulCombinators__/graphics/icons/signal/minus-one-signal.png",
     subgroup = "virtual-signal",
     order = "u[minus-one]"
+  },
+  {
+    type = "virtual-signal",
+    name = "radius-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/radius-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[radius]"
   }
 })

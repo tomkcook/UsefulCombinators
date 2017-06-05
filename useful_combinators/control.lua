@@ -604,6 +604,83 @@ classes["converter-combinator"] = {
   end
 }
 
+classes["detector-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[1].signal.name then
+        local p1,p2 = params[1], params[2]
+        if control.enabled then
+          local r = p1.count
+          if r > 8 then r = 8 end
+          if r < 1 then r = 1 end
+          local slots = {
+            {signal = {type = "virtual", name = "radius-signal"}, count = r, index = 1}
+          }
+          local units = #object.entity.surface.find_enemy_units(object.entity.position, r + 0.5)
+          if p2.signal.name then
+            table.insert(slots, {signal = p2.signal, count = units, index = 2})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "radius-signal"}, count = 8, index = 1},
+            {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 2}
+          }
+        }
+      end
+    end
+  end
+}
+
+classes["sensor-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[1].signal.name then
+        local p1,p2 = params[1],params[2]
+        if control.enabled then
+          local r = p1.count
+          if r > 8 then r = 8 end
+          if r < 1 then r = 1 end
+          local slots = {
+            {signal = {type = "virtual", name = "radius-signal"}, count = r, index = 1}
+          }
+          local pos = object.entity.position
+          local units = object.entity.surface.count_entities_filtered(
+          {
+            area = {{pos.x - (r + 0.5), pos.y - (r + 0.5)}, {pos.x + (r + 0.5), pos.y + (r + 0.5)}},
+            type = "player"
+          })
+          if p2.signal.name then
+            table.insert(slots, {signal = p2.signal, count = units, index = 2})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "radius-signal"}, count = 8, index = 1},
+            {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 2}
+          }
+        }
+      end
+    end
+  end
+}
+
 function parse(a, op, b)
   if op == "lt-signal" then
     if a < b then
