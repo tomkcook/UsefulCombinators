@@ -125,5 +125,19 @@ data:extend(
     icon = "__UsefulCombinators__/graphics/icons/signal/radius-signal.png",
     subgroup = "virtual-signal",
     order = "u[radius]"
+  },
+  {
+    type = "virtual-signal",
+    name = "width-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/width-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[width]"
+  },
+  {
+    type = "virtual-signal",
+    name = "height-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/height-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[height]"
   }
 })

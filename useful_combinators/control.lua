@@ -2,7 +2,7 @@ local data = {}
 local classes = {}
 
 function save()
-  global.uc_data = data
+  global["uc_data"] = data
 end
 
 classes["timer-combinator"] = {
@@ -681,6 +681,41 @@ classes["sensor-combinator"] = {
   end
 }
 
+classes["railway-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[1].signal.name then
+        local p1 = params[1]
+        if control.enabled then
+          local slots = {}
+          local pos = object.entity.position
+          local units = object.entity.surface.count_entities_filtered(
+            {
+              area = {{pos.x - 1, pos.y - 1}, {pos.x + 1, pos.y + 1}},
+              type = "locomotive"
+            })
+          if p1.signal.name then
+            table.insert(slots, {signal = p3.signal, count = units, index = 1})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 1}
+          }
+        }
+      end
+    end
+  end
+}
+
 function parse(a, op, b)
   if op == "lt-signal" then
     if a < b then
@@ -786,9 +821,13 @@ function tick()
   end
 end
 
+function uc_load()
+  data = global["uc_data"] or {}
+end
+
 function init()
-  data = global.uc_data or {}
-  for k, v in pairs(classes) do
+  data = global["uc_data"] or {}
+  for k,v in pairs(classes) do
     data[k] = data[k] or {}
   end
 end
@@ -798,16 +837,28 @@ function configuration_changed(cfg)
     local changes = cfg.mod_changes["UsefulCombinators"]
     if changes then
       init()
+      if not global["uc_data"] then
+        for k,v in pairs(classes) do
+          for _,s in pairs(game.surfaces) do
+            for i,j in pairs(s.find_entities_filtered({name = k})) do
+              local tab = data[j.name]
+              table.insert(tab, classes[j.name].on_place(j))
+              data[j.name] = tab
+            end
+          end
+        end
+      end
+      save()
     end
   end
 end
 
 script.on_init(init)
-script.on_load(init)
+script.on_load(uc_load)
 script.on_configuration_changed(configuration_changed)
-script.on_event(defines.events.on_tick, tick)
 script.on_event(defines.events.on_built_entity, entity_built)
 script.on_event(defines.events.on_robot_built_entity, entity_built)
 script.on_event(defines.events.on_preplayer_mined_item, entity_removed)
 script.on_event(defines.events.on_robot_pre_mined, entity_removed)
 script.on_event(defines.events.on_entity_died, entity_removed)
+script.on_event(defines.events.on_tick, tick)

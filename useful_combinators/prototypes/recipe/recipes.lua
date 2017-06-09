@@ -174,5 +174,16 @@ data:extend({
       {"decider-combinator", 1}
     },
     result = "sensor-combinator"
+  },
+  {
+    type = "recipe",
+    name = "railway-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"advanced-circuit", 2},
+      {"decider-combinator", 1}
+    },
+    result = "railway-combinator"
   }
 })

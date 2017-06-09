@@ -169,5 +169,15 @@ data:extend(
     place_result="sensor-combinator",
     order = "b[combinators]-u[sensor-combinator]",
     stack_size= 10,
+  },
+  {
+    type = "item",
+    name = "railway-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/railway-combinator.png",
+    flags = { "goes-to-quickbar" },
+    subgroup = "circuit-network",
+    place_result="railway-combinator",
+    order = "b[combinators]-u[railway-combinator]",
+    stack_size= 10,
   }
 }) 
