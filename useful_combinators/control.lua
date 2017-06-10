@@ -699,7 +699,7 @@ classes["railway-combinator"] = {
               type = "locomotive"
             })
           if p1.signal.name then
-            table.insert(slots, {signal = p3.signal, count = units, index = 1})
+            table.insert(slots, {signal = p1.signal, count = units, index = 1})
           end
           control.parameters = {
             parameters = slots
