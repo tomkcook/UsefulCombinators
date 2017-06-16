@@ -139,5 +139,54 @@ data:extend(
     icon = "__UsefulCombinators__/graphics/icons/signal/height-signal.png",
     subgroup = "virtual-signal",
     order = "u[height]"
+  },
+  {
+    type = "virtual-signal",
+    name = "red-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/red-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[red]"
+  },
+  {
+    type = "virtual-signal",
+    name = "yellow-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/yellow-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[yellow]"
+  },
+  {
+    type = "virtual-signal",
+    name = "green-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/green-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[green]"
+  },
+  {
+    type = "virtual-signal",
+    name = "cyan-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/cyan-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[cyan]"
+  },
+  {
+    type = "virtual-signal",
+    name = "blue-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/blue-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[blue]"
+  },
+  {
+    type = "virtual-signal",
+    name = "magenta-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/magenta-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[magenta]"
+  },
+  {
+    type = "virtual-signal",
+    name = "white-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/white-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[white]"
   }
 })
