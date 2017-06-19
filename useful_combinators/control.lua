@@ -723,66 +723,82 @@ classes["color-combinator"] = {
     local control = object.entity.get_control_behavior()
     if control then
       local params = control.parameters.parameters
-      if params[2].signal.name then
-        local p1,p2,p3,p4,p5,p6,p7,p8 = params[1],params[2],params[3],params[4],params[5],params[6],params[7],params[8]
+      if params[7].signal.name then
+        local p = {
+          params[1],
+          params[2],
+          params[3],
+          params[4],
+          params[5],
+          params[6],
+          params[7],
+          params[8],
+          params[9],
+          params[10],
+          params[11],
+          params[12],
+          params[13],
+          params[14],
+          params[15],
+          params[16],
+          params[17],
+          params[18]
+        }
         if control.enabled then
           local slots = {
-            {signal = p1.signal, count = 0, index = 1},
-            {signal = {type = "virtual", name = "red-signal"}, count = p2.count, index = 2},
-            {signal = {type = "virtual", name = "green-signal"}, count = p3.count, index = 3},
-            {signal = {type = "virtual", name = "blue-signal"}, count = p4.count, index = 4},
-            {signal = {type = "virtual", name = "yellow-signal"}, count = p5.count, index = 5},
-            {signal = {type = "virtual", name = "magenta-signal"}, count = p6.count, index = 6},
-            {signal = {type = "virtual", name = "cyan-signal"}, count = p7.count, index = 7},
-            {signal = {type = "virtual", name = "white-signal"}, count = p8.count, index = 8}
+            {signal = p[1].signal, count = 0, index = 1},
+            {signal = p[2].signal, count = 0, index = 2},
+            {signal = p[3].signal, count = 0, index = 3},
+            {signal = p[4].signal, count = 0, index = 4},
+            {signal = p[5].signal, count = 0, index = 5},
+            {signal = p[6].signal, count = 0, index = 6},
+            {signal = {type = "virtual", name = "red-signal"}, count = p[7].count, index = 7},
+            {signal = {type = "virtual", name = "green-signal"}, count = p[8].count, index = 8},
+            {signal = {type = "virtual", name = "blue-signal"}, count = p[9].count, index = 9},
+            {signal = {type = "virtual", name = "yellow-signal"}, count = p[10].count, index = 10},
+            {signal = {type = "virtual", name = "magenta-signal"}, count = p[11].count, index = 11},
+            {signal = {type = "virtual", name = "cyan-signal"}, count = p[12].count, index = 12},
           } 
-          if p1.signal.name and p2.signal.name then
-            if get_count(control, p1.signal) == p2.count then
-              table.insert(slots, {signal = {type = "virtual", name = "signal-red"}, count = 1, index = 9})
+          if p[1].signal.name and p[7].signal.name then
+            if get_count(control, p[1].signal) == p[7].count then
+              table.insert(slots, {signal = {type = "virtual", name = "signal-red"}, count = 1, index = 13})
             else
-              table.insert(slots, {signal = {type = "virtual", name = "signal-red"}, count = 0, index = 9})
+              table.insert(slots, {signal = {type = "virtual", name = "signal-red"}, count = 0, index = 13})
             end
           end
-          if p1.signal.name and p3.signal.name then
-            if get_count(control, p1.signal) == p3.count then
-              table.insert(slots, {signal = {type = "virtual", name = "signal-green"}, count = 1, index = 10})
+          if p[2].signal.name and p[8].signal.name then
+            if get_count(control, p[2].signal) == p[8].count then
+              table.insert(slots, {signal = {type = "virtual", name = "signal-green"}, count = 1, index = 14})
             else
-              table.insert(slots, {signal = {type = "virtual", name = "signal-green"}, count = 0, index = 10})
+              table.insert(slots, {signal = {type = "virtual", name = "signal-green"}, count = 0, index = 14})
             end
           end
-          if p1.signal.name and p4.signal.name then
-            if get_count(control, p1.signal) == p4.count then
-              table.insert(slots, {signal = {type = "virtual", name = "signal-blue"}, count = 1, index = 11})
+          if p[3].signal.name and p[9].signal.name then
+            if get_count(control, p[3].signal) == p[9].count then
+              table.insert(slots, {signal = {type = "virtual", name = "signal-blue"}, count = 1, index = 15})
             else
-              table.insert(slots, {signal = {type = "virtual", name = "signal-blue"}, count = 0, index = 11})
+              table.insert(slots, {signal = {type = "virtual", name = "signal-blue"}, count = 0, index = 15})
             end
           end
-          if p1.signal.name and p5.signal.name then
-            if get_count(control, p1.signal) == p5.count then
-              table.insert(slots, {signal = {type = "virtual", name = "signal-yellow"}, count = 1, index = 12})
+          if p[4].signal.name and p[10].signal.name then
+            if get_count(control, p[4].signal) == p[10].count then
+              table.insert(slots, {signal = {type = "virtual", name = "signal-yellow"}, count = 1, index = 16})
             else
-              table.insert(slots, {signal = {type = "virtual", name = "signal-yellow"}, count = 0, index = 12})
+              table.insert(slots, {signal = {type = "virtual", name = "signal-yellow"}, count = 0, index = 16})
             end
           end
-          if p1.signal.name and p6.signal.name then
-            if get_count(control, p1.signal) == p6.count then
-              table.insert(slots, {signal = {type = "virtual", name = "signal-pink"}, count = 1, index = 13})
+          if p[5].signal.name and p[11].signal.name then
+            if get_count(control, p[5].signal) == p[11].count then
+              table.insert(slots, {signal = {type = "virtual", name = "signal-pink"}, count = 1, index = 17})
             else
-              table.insert(slots, {signal = {type = "virtual", name = "signal-pink"}, count = 0, index = 13})
+              table.insert(slots, {signal = {type = "virtual", name = "signal-pink"}, count = 0, index = 17})
             end
           end
-          if p1.signal.name and p7.signal.name then
-            if get_count(control, p1.signal) == p7.count then
-              table.insert(slots, {signal = {type = "virtual", name = "signal-cyan"}, count = 1, index = 14})
+          if p[6].signal.name and p[12].signal.name then
+            if get_count(control, p[6].signal) == p[12].count then
+              table.insert(slots, {signal = {type = "virtual", name = "signal-cyan"}, count = 1, index = 18})
             else
-              table.insert(slots, {signal = {type = "virtual", name = "signal-cyan"}, count = 0, index = 14})
-            end
-          end
-          if p1.signal.name and p8.signal.name then
-            if get_count(control, p1.signal) == p8.count then
-              table.insert(slots, {signal = {type = "virtual", name = "signal-white"}, count = 1, index = 15})
-            else
-              table.insert(slots, {signal = {type = "virtual", name = "signal-white"}, count = 0, index = 15})
+              table.insert(slots, {signal = {type = "virtual", name = "signal-cyan"}, count = 0, index = 18})
             end
           end
           control.parameters = {
@@ -792,21 +808,24 @@ classes["color-combinator"] = {
       else
         control.parameters = {
           parameters = {
-            {signal = {type = "virtual", name = "counting-signal"}, count = 0, index = 1},
-            {signal = {type = "virtual", name = "red-signal"}, count = 1, index = 2},
-            {signal = {type = "virtual", name = "green-signal"}, count = 2, index = 3},
-            {signal = {type = "virtual", name = "blue-signal"}, count = 3, index = 4},
-            {signal = {type = "virtual", name = "yellow-signal"}, count = 4, index = 5},
-            {signal = {type = "virtual", name = "magenta-signal"}, count = 5, index = 6},
-            {signal = {type = "virtual", name = "cyan-signal"}, count = 6, index = 7},
-            {signal = {type = "virtual", name = "white-signal"}, count = 7, index = 8},
-            {signal = {type = "virtual", name = "signal-red"}, count = 0, index = 9},
-            {signal = {type = "virtual", name = "signal-green"}, count = 0, index = 10},
-            {signal = {type = "virtual", name = "signal-blue"}, count = 0, index = 11},
-            {signal = {type = "virtual", name = "signal-yellow"}, count = 0, index = 12},
-            {signal = {type = "virtual", name = "signal-pink"}, count = 0, index = 13},
-            {signal = {type = "virtual", name = "signal-cyan"}, count = 0, index = 14},
-            {signal = {type = "virtual", name = "signal-white"}, count = 0, index = 15}
+            {signal = {type = "virtual", name = "signal-A"}, count = 0, index = 1},
+            {signal = {type = "virtual", name = "signal-B"}, count = 0, index = 2},
+            {signal = {type = "virtual", name = "signal-C"}, count = 0, index = 3},
+            {signal = {type = "virtual", name = "signal-D"}, count = 0, index = 4},
+            {signal = {type = "virtual", name = "signal-E"}, count = 0, index = 5},
+            {signal = {type = "virtual", name = "signal-F"}, count = 0, index = 6},
+            {signal = {type = "virtual", name = "red-signal"}, count = 1, index = 7},
+            {signal = {type = "virtual", name = "green-signal"}, count = 2, index = 8},
+            {signal = {type = "virtual", name = "blue-signal"}, count = 3, index = 9},
+            {signal = {type = "virtual", name = "yellow-signal"}, count = 4, index = 10},
+            {signal = {type = "virtual", name = "magenta-signal"}, count = 5, index = 11},
+            {signal = {type = "virtual", name = "cyan-signal"}, count = 6, index = 12},
+            {signal = {type = "virtual", name = "signal-red"}, count = 0, index = 13},
+            {signal = {type = "virtual", name = "signal-green"}, count = 0, index = 14},
+            {signal = {type = "virtual", name = "signal-blue"}, count = 0, index = 15},
+            {signal = {type = "virtual", name = "signal-yellow"}, count = 0, index = 16},
+            {signal = {type = "virtual", name = "signal-pink"}, count = 0, index = 17},
+            {signal = {type = "virtual", name = "signal-cyan"}, count = 0, index = 18}
           }
         }
       end
