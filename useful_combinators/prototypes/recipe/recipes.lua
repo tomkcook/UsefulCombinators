@@ -196,5 +196,27 @@ data:extend({
       {"small-lamp", 1}
     },
     result = "color-combinator"
+  },
+  {
+    type = "recipe",
+    name = "emitter-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"processing-unit", 2},
+      {"logistic-chest-active-provider", 1}
+    },
+    result = "emitter-combinator"
+  },
+  {
+    type = "recipe",
+    name = "receiver-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"processing-unit", 2},
+      {"logistic-chest-requester", 1}
+    },
+    result = "receiver-combinator"
   }
 })
