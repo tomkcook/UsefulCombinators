@@ -1013,7 +1013,7 @@ end
 
 function entity_built(event)
   if classes[event.created_entity.name] ~= nil then
-      local tab = data[event.created_entity.name]
+      local tab = data[event.created_entity.name] or {}
       table.insert(tab, classes[event.created_entity.name].on_place(event.created_entity))
       data[event.created_entity.name] = tab
       save()
@@ -1037,7 +1037,7 @@ end
 
 function tick()
   for k,v in pairs(classes) do
-    if data and data[k] then
+    if data ~= nil and data[k] ~= nil then
       for q,i in pairs(data[k]) do
         if i.entity.valid then
           v.on_tick(i, q)
