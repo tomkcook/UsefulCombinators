@@ -1037,9 +1037,11 @@ end
 
 function tick()
   for k,v in pairs(classes) do
-    for q,i in pairs(data[k]) do
-      if i.entity.valid then
-        v.on_tick(i, q)
+    if data and data[k] then
+      for q,i in pairs(data[k]) do
+        if i.entity.valid then
+          v.on_tick(i, q)
+        end
       end
     end
   end
