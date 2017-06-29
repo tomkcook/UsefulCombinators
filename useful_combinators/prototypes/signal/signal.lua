@@ -1,4 +1,4 @@
-data:extend(
+  data:extend(
 {
   {
     type = "virtual-signal",
@@ -188,5 +188,33 @@ data:extend(
     icon = "__UsefulCombinators__/graphics/icons/signal/white-signal.png",
     subgroup = "virtual-signal",
     order = "u[white]"
+  },
+  {
+    type = "virtual-signal",
+    name = "watts-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/watts-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[watts]"
+  },
+  {
+    type = "virtual-signal",
+    name = "kilo-watts-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/kilo-watts-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[kilo]"
+  },
+  {
+    type = "virtual-signal",
+    name = "mega-watts-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/mega-watts-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[mega]"
+  },
+  {
+    type = "virtual-signal",
+    name = "giga-watts-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/giga-watts-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[giga]"
   }
 })

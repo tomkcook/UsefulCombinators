@@ -85,6 +85,10 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "receiver-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "power-combinator"
       }
     },
     prerequisites = {"circuit-network"},

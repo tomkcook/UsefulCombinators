@@ -219,5 +219,16 @@ data:extend(
     place_result="receiver-combinator",
     order = "g[receiver]",
     stack_size= 50,
+  },
+  {
+    type = "item",
+    name = "power-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/power-combinator.png",
+    flags = { "goes-to-quickbar" },
+    group = "useful-combinators",
+    subgroup = "other2",
+    place_result="power-combinator",
+    order = "a[power]",
+    stack_size= 50,
   }
 }) 
