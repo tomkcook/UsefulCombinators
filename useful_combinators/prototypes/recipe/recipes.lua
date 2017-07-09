@@ -34,17 +34,6 @@ data:extend({
   },
   {
     type = "recipe",
-    name = "comparator-combinator",
-    enabled = "false",
-    ingredients =
-    {
-      {"constant-combinator", 1},
-      {"decider-combinator", 1}
-    },
-    result = "comparator-combinator"
-  },
-  {
-    type = "recipe",
     name = "converter-combinator",
     enabled = "false",
     ingredients =

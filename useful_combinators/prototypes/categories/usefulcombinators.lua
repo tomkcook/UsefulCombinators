@@ -25,11 +25,5 @@ data:extend(
 		name = "other",
 		group = "useful-combinators",
 		order = "c",
-	},
-  {
-		type = "item-subgroup",
-		name = "other2",
-		group = "useful-combinators",
-		order = "d",
 	}
 })

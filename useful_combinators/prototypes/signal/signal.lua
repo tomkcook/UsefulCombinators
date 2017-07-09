@@ -9,34 +9,6 @@
   },
   {
     type = "virtual-signal",
-    name = "time-mod-signal",
-    icon = "__UsefulCombinators__/graphics/icons/signal/time-mod-signal.png",
-    subgroup = "virtual-signal",
-    order = "u[time-mod]"
-  },
-  {
-    type = "virtual-signal",
-    name = "divisor-signal",
-    icon = "__UsefulCombinators__/graphics/icons/signal/divisor-signal.png",
-    subgroup = "virtual-signal",
-    order = "u[divisor]"
-  },
-  {
-    type = "virtual-signal",
-    name = "interval-signal",
-    icon = "__UsefulCombinators__/graphics/icons/signal/interval-signal.png",
-    subgroup = "virtual-signal",
-    order = "u[interval]"
-  },
-  {
-    type = "virtual-signal",
-    name = "lower-signal",
-    icon = "__UsefulCombinators__/graphics/icons/signal/lower-signal.png",
-    subgroup = "virtual-signal",
-    order = "u[lower]"
-  },
-  {
-    type = "virtual-signal",
     name = "plus-one-signal",
     icon = "__UsefulCombinators__/graphics/icons/signal/plus-one-signal.png",
     subgroup = "virtual-signal",
@@ -65,48 +37,6 @@
   },
   {
     type = "virtual-signal",
-    name = "upper-signal",
-    icon = "__UsefulCombinators__/graphics/icons/signal/upper-signal.png",
-    subgroup = "virtual-signal",
-    order = "u[upper]"
-  },
-  {
-    type = "virtual-signal",
-    name = "lt-signal",
-    icon = "__UsefulCombinators__/graphics/icons/signal/lt-signal.png",
-    subgroup = "virtual-signal",
-    order = "u[lt]"
-  },
-  {
-    type = "virtual-signal",
-    name = "lte-signal",
-    icon = "__UsefulCombinators__/graphics/icons/signal/lte-signal.png",
-    subgroup = "virtual-signal",
-    order = "u[lte]"
-  },
-  {
-    type = "virtual-signal",
-    name = "eq-signal",
-    icon = "__UsefulCombinators__/graphics/icons/signal/eq-signal.png",
-    subgroup = "virtual-signal",
-    order = "u[eq]"
-  },
-  {
-    type = "virtual-signal",
-    name = "gte-signal",
-    icon = "__UsefulCombinators__/graphics/icons/signal/gte-signal.png",
-    subgroup = "virtual-signal",
-    order = "u[gte]"
-  },
-  {
-    type = "virtual-signal",
-    name = "gt-signal",
-    icon = "__UsefulCombinators__/graphics/icons/signal/gt-signal.png",
-    subgroup = "virtual-signal",
-    order = "u[gt]"
-  },
-  {
-    type = "virtual-signal",
     name = "blank",
     icon = "__UsefulCombinators__/graphics/icons/signal/blank.png",
     subgroup = "virtual-signal",
@@ -125,20 +55,6 @@
     icon = "__UsefulCombinators__/graphics/icons/signal/radius-signal.png",
     subgroup = "virtual-signal",
     order = "u[radius]"
-  },
-  {
-    type = "virtual-signal",
-    name = "width-signal",
-    icon = "__UsefulCombinators__/graphics/icons/signal/width-signal.png",
-    subgroup = "virtual-signal",
-    order = "u[width]"
-  },
-  {
-    type = "virtual-signal",
-    name = "height-signal",
-    icon = "__UsefulCombinators__/graphics/icons/signal/height-signal.png",
-    subgroup = "virtual-signal",
-    order = "u[height]"
   },
   {
     type = "virtual-signal",
@@ -216,5 +132,26 @@
     icon = "__UsefulCombinators__/graphics/icons/signal/giga-watts-signal.png",
     subgroup = "virtual-signal",
     order = "u[giga]"
+  },
+  {
+    type = "virtual-signal",
+    name = "input-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/input-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[input]"
+  },
+  {
+    type = "virtual-signal",
+    name = "start-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/start-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[start]"
+  },
+  {
+    type = "virtual-signal",
+    name = "stop-signal",
+    icon = "__UsefulCombinators__/graphics/icons/signal/stop-signal.png",
+    subgroup = "virtual-signal",
+    order = "u[stop]"
   }
 })
