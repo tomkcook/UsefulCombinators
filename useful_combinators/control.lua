@@ -12,7 +12,7 @@ classes["timer-combinator"] = {
     object.meta.reset = tonumber(gui["reset"].text) or object.meta.reset
     object.meta.ticks = tonumber(gui["ticks"].text) or object.meta.ticks
     if object.meta.running then
-      object.meta.running = falsea
+      object.meta.running = false
     end
     object.meta.count = 0
   end,
@@ -1806,7 +1806,7 @@ function tick()
   for k,v in pairs(classes) do
     if data ~= nil and data[k] ~= nil then
       for q,i in pairs(data[k]) do
-        if i.meta.entity.valid then
+        if i.meta and i.meta.entity.valid then
           v.on_tick(i, q)
         end
       end
@@ -1832,11 +1832,11 @@ function configuration_changed(cfg)
       init()
       if not global["uc_data"] then
         for k,v in pairs(classes) do
+          local tab = data[k]
           for _,s in pairs(game.surfaces) do
             for i,j in pairs(s.find_entities_filtered({name = k})) do
-              local tab = data[j.name]
-              table.insert(tab, classes[j.name].on_place(j))
-              data[j.name] = tab
+              table.insert(tab, classes[k].on_place(j))
+              data[k] = tab
             end
           end
         end

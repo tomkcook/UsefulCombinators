@@ -4,7 +4,9 @@ for index, force in pairs(game.forces) do
   force.reset_technologies()
   if force.technologies["useful-combinators"].researched then
     force.recipes["random-combinator"].enabled = true
-    force.recipes["comparator-combinator"].enabled = true
+    if force.recipes["comparator-combinator"] then
+      force.recipes["comparator-combinator"].enabled = true
+    end
     force.recipes["converter-combinator"].enabled = true
     force.recipes["timer-combinator"].enabled = true
     force.recipes["counting-combinator"].enabled = true
