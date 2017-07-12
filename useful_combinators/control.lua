@@ -280,7 +280,6 @@ classes["min-combinator"] = {
         local signals = get_signals(control)
         local signal = {type = "virtual"}
         local count = math.huge
-        object.meta.count = 0
         for k,v in pairs(signals) do
           count = math.min(count, v.count)
           if count == v.count then
@@ -350,7 +349,8 @@ classes["max-combinator"] = {
           {signal = {type = "virtual"}},
           {signal = {type = "virtual"}},
           {signal = {type = "virtual"}}
-        }
+        },
+        
       }
     }
   end,
@@ -364,7 +364,6 @@ classes["max-combinator"] = {
         local signals = get_signals(control)
         local signal = {type = "virtual"}
         local count = -math.huge
-        object.meta.count = 0
         for k,v in pairs(signals) do
           count = math.max(count, v.count)
           if count == v.count then
@@ -1845,7 +1844,7 @@ function configuration_changed(cfg)
         end
       end
     end
-  end
+  end 
 end
 
 function on_key(event)
@@ -1858,7 +1857,7 @@ function on_key(event)
           for h,i in pairs(data[k]) do
             if i.meta.entity.valid then
               if i.meta.entity == entity then
-                if not (player.gui.center["uc"]) then
+                if not (player.gui.center["uc"]) and not player.cursor_stack.valid_for_read then
                   table.insert(selected, { player = player, entity = entity})
                   v.on_key(player, i)
                   if entity.operable then
