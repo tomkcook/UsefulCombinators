@@ -1848,21 +1848,24 @@ function configuration_changed(cfg)
   end
 end
 
-function onKey(event)
+function on_key(event)
   local player = game.players[event.player_index]
   local entity = player.selected
   if entity and player.can_reach_entity(entity) then
     for k,v in pairs(classes) do
       if data ~= nil and data[k] ~= nil then
-        if k == entity.name then
+        if entity.name == k then
           for h,i in pairs(data[k]) do
             if i.meta.entity.valid then
               if i.meta.entity == entity then
                 if not (player.gui.center["uc"]) then
                   table.insert(selected, { player = player, entity = entity})
                   v.on_key(player, i)
+                  if entity.operable then
+                    entity.operable = false
+                  end
+                  break
                 end
-                return
               end
             end
           end
@@ -1872,7 +1875,7 @@ function onKey(event)
   end
 end
 
-function on_click(event)
+function on_click_ok(event)
   local player = game.players[event.player_index]
   local element = event.element
   if element.name and element.name == "uc-exit" then
@@ -1883,6 +1886,9 @@ function on_click(event)
             if i.meta.entity == m.entity then
               v.on_click(player, i)
               table.remove(selected, l)
+              if not i.meta.entity.operable then
+                i.meta.entity.operable = true
+              end
               break
             end
           end
@@ -1896,14 +1902,27 @@ end
 --[[function on_paste(event)
   local player = game.players[event.player_index]
   local copy,paste = event.source,event.destination
-  if copy.name == paste.name then
-    for k,v in pairs(classes) do
-      if data and data[k] then
-        for h,i in pairs(data[k]) do
-          if selected[i.meta.entity] and (i.meta.entity == selected[i.meta.entity].entity) then
-            v.on_click(player, i)
-            selected[i.meta.entity] = nil
-            break
+  for k,v in pairs(classes) do
+    if copy.name == k and paste.name == k then
+      if copy.valid and paste.valid then
+        if data and data[k] then
+          local from,to
+          for a,b in pairs (data[k]) do
+            if b.meta.entity == copy then
+              from = b
+              break
+            end
+          end
+          for a,b in pairs (data[k]) do
+            if b.meta.entity == paste then
+              to = b
+              break
+            end
+          end
+          for a,b in pairs(from.meta) do
+            if not (a == "entity") then
+              to.meta[a] = b
+            end
           end
         end
       end
@@ -1919,7 +1938,7 @@ script.on_event(defines.events.on_preplayer_mined_item, entity_removed)
 script.on_event(defines.events.on_robot_pre_mined, entity_removed)
 script.on_event(defines.events.on_entity_died, entity_removed)
 script.on_event(defines.events.on_tick, tick)
-script.on_event(defines.events.on_gui_click, on_click)
+script.on_event(defines.events.on_gui_click, on_click_ok)
 --script.on_event(defines.events.on_entity_settings_pasted, on_paste)
-script.on_event("uc-key", onKey)
+script.on_event("uc-edit", on_key)
 script.on_configuration_changed(configuration_changed)
