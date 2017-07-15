@@ -1574,7 +1574,7 @@ classes["receiver-combinator"] = {
         if control.enabled then
           local sender
           for k,v in pairs(data["emitter-combinator"]) do
-            if v.meta.params[1] and (p1.signal.name == v.meta.params[1].signal.name) then
+            if v.meta.params[1] and (p1.name == v.meta.params[1].signal.name) then
               sender = v.meta
               break;
             end
