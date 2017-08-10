@@ -218,5 +218,16 @@ data:extend({
       {"copper-cable", 3}
     },
     result = "power-combinator"
+  },
+  {
+    type = "recipe",
+    name = "daytime-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"timer-combinator", 1}
+    },
+    result = "daytime-combinator"
   }
 })
