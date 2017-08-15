@@ -229,5 +229,16 @@ data:extend({
       {"timer-combinator", 1}
     },
     result = "daytime-combinator"
+  },
+  {
+    type = "recipe",
+    name = "pollution-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"constant-combinator", 1}
+    },
+    result = "pollution-combinator"
   }
 })

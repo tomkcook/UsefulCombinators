@@ -230,5 +230,16 @@ data:extend(
     place_result="daytime-combinator",
     order = "a[daytime]",
     stack_size= 50,
+  },
+  {
+    type = "item",
+    name = "pollution-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/pollution-combinator.png",
+    flags = { "goes-to-quickbar" },
+    group = "useful-combinators",
+    subgroup = "other2",
+    place_result="pollution-combinator",
+    order = "b[pollution]",
+    stack_size= 50,
   }
 }) 
