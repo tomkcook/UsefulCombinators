@@ -240,5 +240,16 @@ data:extend({
       {"constant-combinator", 1}
     },
     result = "pollution-combinator"
+  },
+  {
+    type = "recipe",
+    name = "statistic-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"counting-combinator", 1}
+    },
+    result = "statistic-combinator"
   }
 })

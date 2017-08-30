@@ -239,7 +239,18 @@ data:extend(
     group = "useful-combinators",
     subgroup = "other2",
     place_result="pollution-combinator",
-    order = "b[pollution]",
+    order = "c[pollution]",
+    stack_size= 50,
+  },
+  {
+    type = "item",
+    name = "statistic-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/statistic-combinator.png",
+    flags = { "goes-to-quickbar" },
+    group = "useful-combinators",
+    subgroup = "other2",
+    place_result="statistic-combinator",
+    order = "b[statistic]",
     stack_size= 50,
   }
 }) 
