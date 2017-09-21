@@ -1182,7 +1182,7 @@ classes["detector-combinator"] = {
     return {
       meta = {
         entity = entity,
-        radius = 8,
+        radius = 24,
         signal = {type = "virtual", name = "output-signal"}
       }
     }
@@ -1195,9 +1195,9 @@ classes["detector-combinator"] = {
       if signal then
         if control.enabled then
           local r = object.meta.radius
-          if r > 8 then
-            r = 8
-            object.meta.radius = 8
+          if r > 24 then
+            r = 24
+            object.meta.radius = 24
           end
           if r < 1 then
             r = 1
@@ -1255,7 +1255,7 @@ classes["sensor-combinator"] = {
     return {
       meta = {
         entity = entity,
-        radius = 8,
+        radius = 24,
         signal = {type = "virtual", name = "output-signal"}
       }
     }
@@ -1268,9 +1268,9 @@ classes["sensor-combinator"] = {
       if signal then
         if control.enabled then
           local r = object.meta.radius
-          if r > 8 then
-            r = 8
-            object.meta.radius = 8
+          if r > 24 then
+            r = 24
+            object.meta.radius = 24
           end
           if r < 1 then
             r = 1
