@@ -20,7 +20,7 @@ classes["timer-combinator"] = {
     if not (player.gui.center["uc"]) then
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Timer Combinator"}
-      local layout = uc.add{type = "table", name = "timer-combinator", colspan = 2}
+      local layout = uc.add{type = "table", name = "timer-combinator", column_count = 2}
       layout.add{type = "label", caption = "Reset Count: (?)", tooltip = {"timer-combinator.reset"}}
       layout.add{type = "textfield", name = "reset", style = "uc_text", text = object.meta.reset}
       layout.add{type = "label", caption = "Update Interval: (?)", tooltip = {"timer-combinator.ticks"}}
@@ -29,7 +29,7 @@ classes["timer-combinator"] = {
       layout.add{type = "label", caption = "(extra info)", tooltip = {"timer-combinator.extra"}}
     end
   end,
-  on_place = function(entity)
+	on_place = function(entity)
     return {
       meta = {
         entity = entity,
@@ -87,16 +87,21 @@ classes["counting-combinator"] = {
       local params = object.meta.params
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Counting Combinator"}
-      local layout = uc.add{type = "table", name = "counting-combinator", colspan = 2}
+      local layout = uc.add{type = "table", name = "counting-combinator", column_count = 2}
       layout.add{type = "label", caption = "Reset: (?)", tooltip = {"counting-combinator.reset"}}
       layout.add{type = "textfield", name = "reset", style = "uc_text", text = object.meta.reset}
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
       layout.add{type = "label", caption = "(extra info)", tooltip = {"counting-combinator.extra"}}
     end
   end,
-  on_place = function(entity)
-  return {
-    meta = {
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
+    return {
+      meta = {
         entity = entity,
         count = 0,
         reset = -1
@@ -157,7 +162,7 @@ classes["random-combinator"] = {
       local params = object.meta.params
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Random Combinator"}
-      local layout = uc.add{type = "table", name = "random-combinator", colspan = 2}
+      local layout = uc.add{type = "table", name = "random-combinator", column_count = 2}
       layout.add{type = "label", caption = "Trigger: (?)", tooltip = {"random-combinator.trigger"}}
       if params[1].signal and params[1].signal.name then
         layout.add{type = "choose-elem-button", name = "signal1", elem_type = "signal", signal = params[1].signal}
@@ -179,7 +184,12 @@ classes["random-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
   return {
     meta = {
         entity = entity,
@@ -246,7 +256,7 @@ classes["min-combinator"] = {
       local params = object.meta.params
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Min Combinator"}
-      local layout = uc.add{type = "table", name = "min-combinator", colspan = 6}
+      local layout = uc.add{type = "table", name = "min-combinator", column_count = 6}
       layout.add{type = "label", caption = "Filter: (?)", tooltip = {"min-combinator.filter"}}
       for i = 1,5 do
         if params[i].signal and params[i].signal.name then
@@ -258,7 +268,12 @@ classes["min-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -329,7 +344,7 @@ classes["max-combinator"] = {
       local params = object.meta.params
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Max Combinator"}
-      local layout = uc.add{type = "table", name = "max-combinator", colspan = 6}
+      local layout = uc.add{type = "table", name = "max-combinator", column_count = 6}
       layout.add{type = "label", caption = "Filter: (?)", tooltip = {"max-combinator.filter"}}
       for i = 1,5 do
         if params[i].signal and params[i].signal.name then
@@ -341,7 +356,12 @@ classes["max-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -420,7 +440,7 @@ classes["and-gate-combinator"] = {
       local params = object.meta.params
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "AND Gate Combinator"}
-      local layout = uc.add{type = "table", name = "and-gate-combinator", colspan = 5}
+      local layout = uc.add{type = "table", name = "and-gate-combinator", column_count = 5}
       if params[1].signal and params[1].signal.name then
         layout.add{type = "choose-elem-button", name = "signal_a", elem_type = "signal", signal = params[1].signal}
       else
@@ -441,7 +461,12 @@ classes["and-gate-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -515,7 +540,7 @@ classes["nand-gate-combinator"] = {
       local params = object.meta.params
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "NAND Gate Combinator"}
-      local layout = uc.add{type = "table", name = "nand-gate-combinator", colspan = 5}
+      local layout = uc.add{type = "table", name = "nand-gate-combinator", column_count = 5}
       if params[1].signal and params[1].signal.name then
         layout.add{type = "choose-elem-button", name = "signal_a", elem_type = "signal", signal = params[1].signal}
       else
@@ -536,7 +561,12 @@ classes["nand-gate-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -610,7 +640,7 @@ classes["nor-gate-combinator"] = {
       local params = object.meta.params
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "NOR Gate Combinator"}
-      local layout = uc.add{type = "table", name = "nor-gate-combinator", colspan = 5}
+      local layout = uc.add{type = "table", name = "nor-gate-combinator", column_count = 5}
       if params[1].signal and params[1].signal.name then
         layout.add{type = "choose-elem-button", name = "signal_a", elem_type = "signal", signal = params[1].signal}
       else
@@ -631,7 +661,12 @@ classes["nor-gate-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -700,7 +735,7 @@ classes["not-gate-combinator"] = {
       local params = object.meta.params
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "NOT Gate Combinator"}
-      local layout = uc.add{type = "table", name = "not-gate-combinator", colspan = 4}
+      local layout = uc.add{type = "table", name = "not-gate-combinator", column_count = 4}
       layout.add{type = "label", caption = "NOT"}
       if params[1].signal and params[1].signal.name then
         layout.add{type = "choose-elem-button", name = "signal_a", elem_type = "signal", signal = params[1].signal}
@@ -716,7 +751,12 @@ classes["not-gate-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -786,7 +826,7 @@ classes["or-gate-combinator"] = {
       local params = object.meta.params
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "OR Gate Combinator"}
-      local layout = uc.add{type = "table", name = "or-gate-combinator", colspan = 5}
+      local layout = uc.add{type = "table", name = "or-gate-combinator", column_count = 5}
       if params[1].signal and params[1].signal.name then
         layout.add{type = "choose-elem-button", name = "signal_a", elem_type = "signal", signal = params[1].signal}
       else
@@ -807,7 +847,12 @@ classes["or-gate-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -881,7 +926,7 @@ classes["xnor-gate-combinator"] = {
       local params = object.meta.params
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "XNOR Gate Combinator"}
-      local layout = uc.add{type = "table", name = "xnor-gate-combinator", colspan = 5}
+      local layout = uc.add{type = "table", name = "xnor-gate-combinator", column_count = 5}
       if params[1].signal and params[1].signal.name then
         layout.add{type = "choose-elem-button", name = "signal_a", elem_type = "signal", signal = params[1].signal}
       else
@@ -902,7 +947,12 @@ classes["xnor-gate-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -976,7 +1026,7 @@ classes["xor-gate-combinator"] = {
       local params = object.meta.params
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "XOR Gate Combinator"}
-      local layout = uc.add{type = "table", name = "xor-gate-combinator", colspan = 5}
+      local layout = uc.add{type = "table", name = "xor-gate-combinator", column_count = 5}
       if params[1].signal and params[1].signal.name then
         layout.add{type = "choose-elem-button", name = "signal_a", elem_type = "signal", signal = params[1].signal}
       else
@@ -997,7 +1047,12 @@ classes["xor-gate-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -1067,7 +1122,7 @@ classes["converter-combinator"] = {
       local params = object.meta.params
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Converter Combinator"}
-      local layout = uc.add{type = "table", name = "converter-combinator", colspan = 2}
+      local layout = uc.add{type = "table", name = "converter-combinator", column_count = 2}
       layout.add{type = "label", caption = "From: (?)", tooltip = {"converter-combinator.from"}}
       layout.add{type = "label", caption = "To: (?)", tooltip = {"converter-combinator.to"}}
       for i = 1,5 do
@@ -1085,7 +1140,12 @@ classes["converter-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -1166,7 +1226,7 @@ classes["detector-combinator"] = {
       local meta = object.meta
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Detector Combinator"}
-      local layout = uc.add{type = "table", name = "detector-combinator", colspan = 4}
+      local layout = uc.add{type = "table", name = "detector-combinator", column_count = 4}
       layout.add{type = "label", caption = "Radius: (?)", tooltip = {"detector-combinator.radius"}}
       layout.add{type = "textfield", name = "radius", style = "uc_text", text = meta.radius}
       layout.add{type = "label", caption = "Signal: (?)", tooltip = {"detector-combinator.signal"}}
@@ -1178,7 +1238,12 @@ classes["detector-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -1239,7 +1304,7 @@ classes["sensor-combinator"] = {
       local meta = object.meta
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Sensor Combinator"}
-      local layout = uc.add{type = "table", name = "sensor-combinator", colspan = 4}
+      local layout = uc.add{type = "table", name = "sensor-combinator", column_count = 4}
       layout.add{type = "label", caption = "Radius: (?)", tooltip = {"sensor-combinator.radius"}}
       layout.add{type = "textfield", name = "radius", style = "uc_text", text = meta.radius}
       layout.add{type = "label", caption = "Signal: (?)", tooltip = {"sensor-combinator.signal"}}
@@ -1251,7 +1316,12 @@ classes["sensor-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -1315,7 +1385,7 @@ classes["railway-combinator"] = {
       local meta = object.meta
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Railway Combinator"}
-      local layout = uc.add{type = "table", name = "railway-combinator", colspan = 2}
+      local layout = uc.add{type = "table", name = "railway-combinator", column_count = 2}
       layout.add{type = "label", caption = "Output: (?)", tooltip = {"railway-combinator.output"}}
       if meta.signal and meta.signal.name then
         layout.add{type = "choose-elem-button", name = "signal", elem_type = "signal", signal = meta.signal}
@@ -1325,7 +1395,12 @@ classes["railway-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -1381,7 +1456,7 @@ classes["color-combinator"] = {
       local gui = player.gui.center
       local params = object.meta.params
       local uc = gui.add{type = "frame", name = "uc", caption = "Color Combinator"}
-      local layout = uc.add{type = "table", name = "color-combinator", colspan = 4}
+      local layout = uc.add{type = "table", name = "color-combinator", column_count = 4}
       for i = 1,6 do
         if i == 1 then
           layout.add{type = "label", caption = "Red: (?)", tooltip = {"color-combinator.red"}}
@@ -1442,7 +1517,12 @@ classes["color-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity) 
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end 
     return {
       meta = {
         entity = entity,
@@ -1531,7 +1611,7 @@ classes["emitter-combinator"] = {
       local gui = player.gui.center
       local params = object.meta.params
       local uc = gui.add{type = "frame", name = "uc", caption = "Emitter Combinator"}
-      local layout = uc.add{type = "table", name = "emitter-combinator", colspan = 8}
+      local layout = uc.add{type = "table", name = "emitter-combinator", column_count = 8}
       layout.add{type = "label", caption = "Signal: (?)", tooltip = {"emitter-combinator.signal"}}
       if params[1] and params[1].signal then  
         layout.add{type = "choose-elem-button", name = "signal1", elem_type = "signal", signal = params[1].signal}
@@ -1549,7 +1629,12 @@ classes["emitter-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -1586,13 +1671,18 @@ classes["receiver-combinator"] = {
     if not (player.gui.center["uc"]) then
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Receiver Combinator"}
-      local layout = uc.add{type = "table", name = "receiver-combinator", colspan = 2}
+      local layout = uc.add{type = "table", name = "receiver-combinator", column_count = 2}
       layout.add{type = "label", caption = "Signal: (?)", tooltip = {"receiver-combinator.signal"}}
       layout.add{type = "choose-elem-button", name = "signal", elem_type = "signal", signal = object.meta.signal}
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -1646,13 +1736,18 @@ classes["power-combinator"] = {
     if not (player.gui.center["uc"]) then
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Power Combinator"}
-      local layout = uc.add{type = "table", name = "power-combinator", colspan = 2}
+      local layout = uc.add{type = "table", name = "power-combinator", column_count = 2}
       layout.add{type = "label", caption = "Ticks: (?)", tooltip = {"power-combinator.ticks"}}
       layout.add{type = "textfield", name = "ticks", style = "uc_text", text = object.meta.ticks}
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -1758,7 +1853,7 @@ classes["daytime-combinator"] = {
       local meta = object.meta
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Daytime Combinator"}
-      local layout = uc.add{type = "table", name = "daytime-combinator", colspan = 2}
+      local layout = uc.add{type = "table", name = "daytime-combinator", column_count = 2}
       layout.add{type = "label", caption = "Minutes: (?)", tooltip = {"daytime-combinator.minutes"}}
       if meta.minutes and meta.minutes.name then
         layout.add{type = "choose-elem-button", name = "minutes", elem_type = "signal", signal = meta.minutes}
@@ -1774,7 +1869,12 @@ classes["daytime-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -1826,7 +1926,7 @@ classes["pollution-combinator"] = {
       local meta = object.meta
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Pollution Combinator"}
-      local layout = uc.add{type = "table", name = "pollution-combinator", colspan = 2}
+      local layout = uc.add{type = "table", name = "pollution-combinator", column_count = 2}
       layout.add{type = "label", caption = "Output: (?)", tooltip = {"pollution-combinator.output"}}
       if meta.output and meta.output.name then
         layout.add{type = "choose-elem-button", name = "output", elem_type = "signal", signal = meta.output}
@@ -1836,7 +1936,12 @@ classes["pollution-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -1890,7 +1995,7 @@ classes["statistic-combinator"] = {
       local gui = player.gui.center
       local params = object.meta.params
       local uc = gui.add{type = "frame", name = "uc", caption = "Statistic Combinator"}
-      local layout = uc.add{type = "table", name = "statistic-combinator", colspan = 8}
+      local layout = uc.add{type = "table", name = "statistic-combinator", column_count = 8}
       layout.add{type = "label", caption = "Type: (?)", tooltip = {"statistic-combinator.stat"}}
       layout.add{type = "drop-down", name = "stat", items = {{"statistic-combinator.production"}, {"statistic-combinator.consumption"}}, selected_index = object.meta.index}
       --layout.add{type = "label", caption = "Ticks: (?)", tooltip = {"statistic-combinator.ticks"}}
@@ -1906,7 +2011,12 @@ classes["statistic-combinator"] = {
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
-  on_place = function(entity)
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local meta = item.get_tag("uc_meta")
+			meta.entity = entity
+			return meta
+		end
     return {
       meta = {
         entity = entity,
@@ -2180,7 +2290,7 @@ script.on_init(init)
 script.on_load(uc_load)
 script.on_event(defines.events.on_built_entity, entity_built)
 script.on_event(defines.events.on_robot_built_entity, entity_built)
-script.on_event(defines.events.on_preplayer_mined_item, entity_removed)
+script.on_event(defines.events.on_pre_player_mined_item, entity_removed)
 script.on_event(defines.events.on_robot_pre_mined, entity_removed)
 script.on_event(defines.events.on_entity_died, entity_removed)
 script.on_event(defines.events.on_tick, tick)
