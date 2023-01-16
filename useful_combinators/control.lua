@@ -29,7 +29,10 @@ classes["timer-combinator"] = {
       layout.add{type = "label", caption = "(extra info)", tooltip = {"timer-combinator.extra"}}
     end
   end,
-	on_place = function(entity)
+	on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+		end
     return {
       meta = {
         entity = entity,
@@ -40,7 +43,10 @@ classes["timer-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)
+    
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -96,9 +102,7 @@ classes["counting-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -108,7 +112,7 @@ classes["counting-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -186,9 +190,7 @@ classes["random-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
   return {
     meta = {
@@ -205,7 +207,7 @@ classes["random-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -270,9 +272,7 @@ classes["min-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -287,7 +287,7 @@ classes["min-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -358,9 +358,7 @@ classes["max-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -376,7 +374,7 @@ classes["max-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -463,9 +461,7 @@ classes["and-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -478,7 +474,7 @@ classes["and-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -563,9 +559,7 @@ classes["nand-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -578,7 +572,7 @@ classes["nand-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -663,9 +657,7 @@ classes["nor-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -678,7 +670,7 @@ classes["nor-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -753,9 +745,7 @@ classes["not-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -767,7 +757,7 @@ classes["not-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -849,9 +839,7 @@ classes["or-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -864,7 +852,7 @@ classes["or-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -949,9 +937,7 @@ classes["xnor-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -964,7 +950,7 @@ classes["xnor-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1049,9 +1035,7 @@ classes["xor-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1064,7 +1048,7 @@ classes["xor-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1142,9 +1126,7 @@ classes["converter-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1168,7 +1150,7 @@ classes["converter-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1240,9 +1222,7 @@ classes["detector-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1252,7 +1232,7 @@ classes["detector-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1318,9 +1298,7 @@ classes["sensor-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1330,7 +1308,7 @@ classes["sensor-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1397,9 +1375,7 @@ classes["railway-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1408,7 +1384,7 @@ classes["railway-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1519,9 +1495,7 @@ classes["color-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end 
     return {
       meta = {
@@ -1537,7 +1511,7 @@ classes["color-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1631,9 +1605,7 @@ classes["emitter-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1642,7 +1614,7 @@ classes["emitter-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1679,9 +1651,7 @@ classes["receiver-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1690,7 +1660,7 @@ classes["receiver-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1744,9 +1714,7 @@ classes["power-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1871,9 +1839,7 @@ classes["daytime-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1883,7 +1849,7 @@ classes["daytime-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)    item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1938,9 +1904,7 @@ classes["pollution-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1949,7 +1913,7 @@ classes["pollution-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)    item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -2013,9 +1977,9 @@ classes["statistic-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local meta = item.get_tag("uc_meta")
-			meta.entity = entity
-			return meta
+			local tag = item.get_tag("uc_meta")
+			tag.meta.entity = entity
+			return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -2033,7 +1997,7 @@ classes["statistic-combinator"] = {
       }
     }
   end,
-  on_destroy = function() end,
+  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -2133,19 +2097,19 @@ end
 function entity_built(event)
   if classes[event.created_entity.name] ~= nil then
     local tab = data[event.created_entity.name] or {}
-    table.insert(tab, classes[event.created_entity.name].on_place(event.created_entity))
+    table.insert(tab, classes[event.created_entity.name].on_place(event.created_entity, event.stack))
     data[event.created_entity.name] = tab
     save()
   end
 end
 
-function entity_removed(event)
+function pre_entity_removed(event)
   if classes[event.entity.name] ~= nil then
     for k,v in ipairs(data[event.entity.name]) do
       if v.meta.entity == event.entity then
         local tab = data[event.entity.name]
         table.remove(tab, k)
-        classes[event.entity.name].on_destroy(v)
+        classes[event.entity.name].on_destroy(v, event.buffer[1])
         data[event.entity.name] = tab
         for i,j in pairs(selected) do
           if j.entity == v.meta.entity then
@@ -2255,43 +2219,12 @@ function on_click_ok(event)
   end
 end
 
---[[function on_paste(event)
-  local player = game.players[event.player_index]
-  local copy,paste = event.source,event.destination
-  for k,v in pairs(classes) do
-    if copy.name == k and paste.name == k then
-      if copy.valid and paste.valid then
-        if data and data[k] then
-          local from,to
-          for a,b in pairs (data[k]) do
-            if b.meta.entity == copy then
-              from = b
-              break
-            end
-          end
-          for a,b in pairs (data[k]) do
-            if b.meta.entity == paste then
-              to = b
-              break
-            end
-          end
-          for a,b in pairs(from.meta) do
-            if not (a == "entity") then
-              to.meta[a] = b
-            end
-          end
-        end
-      end
-    end
-  end
-end]]
-
 script.on_init(init)
 script.on_load(uc_load)
 script.on_event(defines.events.on_built_entity, entity_built)
 script.on_event(defines.events.on_robot_built_entity, entity_built)
-script.on_event(defines.events.on_pre_player_mined_item, entity_removed)
-script.on_event(defines.events.on_robot_pre_mined, entity_removed)
+script.on_event(defines.events.on_player_mined_entity, pre_entity_removed)
+script.on_event(defines.events.on_robot_pre_mined, pre_entity_removed)
 script.on_event(defines.events.on_entity_died, entity_removed)
 script.on_event(defines.events.on_tick, tick)
 script.on_event(defines.events.on_gui_click, on_click_ok)
