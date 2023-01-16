@@ -219,5 +219,16 @@ data:extend(
     place_result="power-combinator",
     order = "d[power]",
     stack_size= 50,
+  },
+  {
+    type = "item",
+    name = "daytime-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/daytime-combinator.png",
+    flags = { "goes-to-quickbar" },
+    group = "useful-combinators",
+    subgroup = "other2",
+    place_result="daytime-combinator",
+    order = "a[daytime]",
+    stack_size= 50,
   }
 }) 

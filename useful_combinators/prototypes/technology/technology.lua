@@ -85,6 +85,10 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "power-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "daytime-combinator"
       }
     },
     prerequisites = {"circuit-network"},
