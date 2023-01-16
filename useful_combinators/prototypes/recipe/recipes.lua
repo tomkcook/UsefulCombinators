@@ -218,5 +218,16 @@ data:extend({
       {"logistic-chest-requester", 1}
     },
     result = "receiver-combinator"
+  },
+  {
+    type = "recipe",
+    name = "power-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"copper-cable", 3}
+    },
+    result = "power-combinator"
   }
 })

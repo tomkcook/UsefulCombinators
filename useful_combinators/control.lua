@@ -1,5 +1,6 @@
 local data = {}
 local classes = {}
+local prev = {}
 
 function save()
   global["uc_data"] = data
@@ -940,6 +941,79 @@ classes["receiver-combinator"] = {
   end
 }
 
+classes["power-combinator"] = {
+  on_place = function(entity)
+    prev[entity] = 0
+    global["prev"] = prev
+    return { entity = entity }
+  end,
+  on_destroy = function(object)
+    prev[object.entity] = nil
+    global["prev"] = prev
+  end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[1].signal.name then
+        local p1 = params[1]
+        if control.enabled then
+          local slots = {
+            {signal = {type = "virtual", name = "watts-signal"}, count = 0, index = 4},
+            {signal = {type = "virtual", name = "kilo-watts-signal"}, count = 0, index = 3},
+            {signal = {type = "virtual", name = "mega-watts-signal"}, count = 0, index = 2},
+            {signal = {type = "virtual", name = "giga-watts-signal"}, count = 0, index = 1}
+          }
+          local pos = object.entity.position
+          local poles = object.entity.surface.find_entities_filtered(
+            {
+              area = {{pos.x - 1, pos.y - 1}, {pos.x + 1, pos.y + 1}},
+              type = "electric-pole"
+            })
+          if p1.signal.name then
+            slots = {}
+            local power = 0
+            local watts = 0
+            if #poles > 0 then
+              for _,p in pairs(poles) do
+                for k,v in pairs(p.electric_network_statistics.output_counts) do
+                  power = power + (p.electric_network_statistics.get_output_count(k) or 0)
+                  
+                end
+                if power > 0 then
+                  break
+                end
+              end
+              watts = (power - prev[object.entity]) * 60
+              prev[object.entity] = power
+            end
+            local w = watts % 1000
+            local kw = ((watts - w) / 1000) % 1000
+            local mw = ((watts - (w + (kw * 1000))) / (10 ^ 6)) % 1000
+            local gw = ((watts - (w + (kw * 1000) + (mw * 10 ^ 6))) / (10 ^ 9))
+            table.insert(slots, {signal = {type = "virtual", name = "watts-signal"}, count = w, index = 4})
+            table.insert(slots, {signal = {type = "virtual", name = "kilo-watts-signal"}, count = kw, index = 3})
+            table.insert(slots, {signal = {type = "virtual", name = "mega-watts-signal"}, count = mw, index = 2})
+            table.insert(slots, {signal = {type = "virtual", name = "giga-watts-signal"}, count = gw, index = 1})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "watts-signal"}, count = 0, index = 4},
+            {signal = {type = "virtual", name = "kilo-watts-signal"}, count = 0, index = 3},
+            {signal = {type = "virtual", name = "mega-watts-signal"}, count = 0, index = 2},
+            {signal = {type = "virtual", name = "giga-watts-signal"}, count = 0, index = 1}
+          }
+        }
+      end
+    end
+  end
+}
+
 function parse(a, op, b)
   if op == "lt-signal" then
     if a < b then
@@ -1049,10 +1123,12 @@ end
 
 function uc_load()
   data = global["uc_data"] or {}
+  prev = global["prev"] or {}
 end
 
 function init()
   data = global["uc_data"] or {}
+  prev = global["prev"] or {}
   for k,v in pairs(classes) do
     data[k] = data[k] or {}
   end
