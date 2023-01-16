@@ -75,5 +75,82 @@ data:extend({
       {"decider-combinator", 1}
     },
     result = "max-combinator"
+  },
+  {
+    type = "recipe",
+    name = "and-gate-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"copper-cable", 2}
+    },
+    result = "and-gate-combinator"
+  },
+  {
+    type = "recipe",
+    name = "or-gate-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"copper-cable", 2}
+    },
+    result = "or-gate-combinator"
+  },
+  {
+    type = "recipe",
+    name = "not-gate-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"copper-cable", 2}
+    },
+    result = "not-gate-combinator"
+  },
+  {
+    type = "recipe",
+    name = "nand-gate-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"copper-cable", 2}
+    },
+    result = "nand-gate-combinator"
+  },
+  {
+    type = "recipe",
+    name = "nor-gate-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"copper-cable", 2}
+    },
+    result = "nor-gate-combinator"
+  },
+  {
+    type = "recipe",
+    name = "xor-gate-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"copper-cable", 2}
+    },
+    result = "xor-gate-combinator"
+  },
+  {
+    type = "recipe",
+    name = "xnor-gate-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"copper-cable", 2}
+    },
+    result = "xnor-gate-combinator"
   }
 })

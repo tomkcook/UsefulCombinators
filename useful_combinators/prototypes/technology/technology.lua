@@ -32,6 +32,34 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "max-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "and-gate-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "nand-gate-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "nor-gate-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "not-gate-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "or-gate-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "xnor-gate-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "xor-gate-combinator"
       }
     },
     prerequisites = {"circuit-network"},
