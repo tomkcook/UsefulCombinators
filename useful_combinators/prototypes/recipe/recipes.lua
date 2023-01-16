@@ -152,5 +152,27 @@ data:extend({
       {"copper-cable", 2}
     },
     result = "xnor-gate-combinator"
+  },
+  {
+    type = "recipe",
+    name = "detector-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"advanced-circuit", 2},
+      {"decider-combinator", 1}
+    },
+    result = "detector-combinator"
+  },
+  {
+    type = "recipe",
+    name = "sensor-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"advanced-circuit", 2},
+      {"decider-combinator", 1}
+    },
+    result = "sensor-combinator"
   }
 })

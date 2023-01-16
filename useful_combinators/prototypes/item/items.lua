@@ -149,5 +149,25 @@ data:extend(
     place_result="xnor-gate-combinator",
     order = "b[combinators]-u[xnor-gate-combinator]",
     stack_size= 10,
+  },
+  {
+    type = "item",
+    name = "detector-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/detector-combinator.png",
+    flags = { "goes-to-quickbar" },
+    subgroup = "circuit-network",
+    place_result="detector-combinator",
+    order = "b[combinators]-u[detector-combinator]",
+    stack_size= 10,
+  },
+  {
+    type = "item",
+    name = "sensor-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/sensor-combinator.png",
+    flags = { "goes-to-quickbar" },
+    subgroup = "circuit-network",
+    place_result="sensor-combinator",
+    order = "b[combinators]-u[sensor-combinator]",
+    stack_size= 10,
   }
 }) 

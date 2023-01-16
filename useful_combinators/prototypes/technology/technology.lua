@@ -61,6 +61,14 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "xor-gate-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "detector-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "sensor-combinator"
       }
     },
     prerequisites = {"circuit-network"},
