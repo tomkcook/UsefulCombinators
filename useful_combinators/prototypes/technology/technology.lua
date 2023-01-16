@@ -93,6 +93,10 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "pollution-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "statistic-combinator"
       }
     },
     prerequisites = {"circuit-network"},
