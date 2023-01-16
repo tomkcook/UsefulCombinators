@@ -716,6 +716,104 @@ classes["railway-combinator"] = {
   end
 }
 
+classes["color-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[2].signal.name then
+        local p1,p2,p3,p4,p5,p6,p7,p8 = params[1],params[2],params[3],params[4],params[5],params[6],params[7],params[8]
+        if control.enabled then
+          local slots = {
+            {signal = p1.signal, count = 0, index = 1},
+            {signal = {type = "virtual", name = "red-signal"}, count = p2.count, index = 2},
+            {signal = {type = "virtual", name = "green-signal"}, count = p3.count, index = 3},
+            {signal = {type = "virtual", name = "blue-signal"}, count = p4.count, index = 4},
+            {signal = {type = "virtual", name = "yellow-signal"}, count = p5.count, index = 5},
+            {signal = {type = "virtual", name = "magenta-signal"}, count = p6.count, index = 6},
+            {signal = {type = "virtual", name = "cyan-signal"}, count = p7.count, index = 7},
+            {signal = {type = "virtual", name = "white-signal"}, count = p8.count, index = 8}
+          } 
+          if p1.signal.name and p2.signal.name then
+            if get_count(control, p1.signal) == p2.count then
+              table.insert(slots, {signal = {type = "virtual", name = "signal-red"}, count = 1, index = 9})
+            else
+              table.insert(slots, {signal = {type = "virtual", name = "signal-red"}, count = 0, index = 9})
+            end
+          end
+          if p1.signal.name and p3.signal.name then
+            if get_count(control, p1.signal) == p3.count then
+              table.insert(slots, {signal = {type = "virtual", name = "signal-green"}, count = 1, index = 10})
+            else
+              table.insert(slots, {signal = {type = "virtual", name = "signal-green"}, count = 0, index = 10})
+            end
+          end
+          if p1.signal.name and p4.signal.name then
+            if get_count(control, p1.signal) == p4.count then
+              table.insert(slots, {signal = {type = "virtual", name = "signal-blue"}, count = 1, index = 11})
+            else
+              table.insert(slots, {signal = {type = "virtual", name = "signal-blue"}, count = 0, index = 11})
+            end
+          end
+          if p1.signal.name and p5.signal.name then
+            if get_count(control, p1.signal) == p5.count then
+              table.insert(slots, {signal = {type = "virtual", name = "signal-yellow"}, count = 1, index = 12})
+            else
+              table.insert(slots, {signal = {type = "virtual", name = "signal-yellow"}, count = 0, index = 12})
+            end
+          end
+          if p1.signal.name and p6.signal.name then
+            if get_count(control, p1.signal) == p6.count then
+              table.insert(slots, {signal = {type = "virtual", name = "signal-pink"}, count = 1, index = 13})
+            else
+              table.insert(slots, {signal = {type = "virtual", name = "signal-pink"}, count = 0, index = 13})
+            end
+          end
+          if p1.signal.name and p7.signal.name then
+            if get_count(control, p1.signal) == p7.count then
+              table.insert(slots, {signal = {type = "virtual", name = "signal-cyan"}, count = 1, index = 14})
+            else
+              table.insert(slots, {signal = {type = "virtual", name = "signal-cyan"}, count = 0, index = 14})
+            end
+          end
+          if p1.signal.name and p8.signal.name then
+            if get_count(control, p1.signal) == p8.count then
+              table.insert(slots, {signal = {type = "virtual", name = "signal-white"}, count = 1, index = 15})
+            else
+              table.insert(slots, {signal = {type = "virtual", name = "signal-white"}, count = 0, index = 15})
+            end
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "counting-signal"}, count = 0, index = 1},
+            {signal = {type = "virtual", name = "red-signal"}, count = 1, index = 2},
+            {signal = {type = "virtual", name = "green-signal"}, count = 2, index = 3},
+            {signal = {type = "virtual", name = "blue-signal"}, count = 3, index = 4},
+            {signal = {type = "virtual", name = "yellow-signal"}, count = 4, index = 5},
+            {signal = {type = "virtual", name = "magenta-signal"}, count = 5, index = 6},
+            {signal = {type = "virtual", name = "cyan-signal"}, count = 6, index = 7},
+            {signal = {type = "virtual", name = "white-signal"}, count = 7, index = 8},
+            {signal = {type = "virtual", name = "signal-red"}, count = 0, index = 9},
+            {signal = {type = "virtual", name = "signal-green"}, count = 0, index = 10},
+            {signal = {type = "virtual", name = "signal-blue"}, count = 0, index = 11},
+            {signal = {type = "virtual", name = "signal-yellow"}, count = 0, index = 12},
+            {signal = {type = "virtual", name = "signal-pink"}, count = 0, index = 13},
+            {signal = {type = "virtual", name = "signal-cyan"}, count = 0, index = 14},
+            {signal = {type = "virtual", name = "signal-white"}, count = 0, index = 15}
+          }
+        }
+      end
+    end
+  end
+}
+
 function parse(a, op, b)
   if op == "lt-signal" then
     if a < b then

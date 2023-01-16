@@ -185,5 +185,16 @@ data:extend({
       {"decider-combinator", 1}
     },
     result = "railway-combinator"
+  },
+  {
+    type = "recipe",
+    name = "color-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"electronic-circuit", 1},
+      {"small-lamp", 1}
+    },
+    result = "color-combinator"
   }
 })

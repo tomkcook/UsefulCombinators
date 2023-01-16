@@ -73,6 +73,10 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "railway-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "color-combinator"
       }
     },
     prerequisites = {"circuit-network"},
