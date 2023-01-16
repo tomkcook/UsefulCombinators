@@ -13,10 +13,10 @@ classes["timer-combinator"] = {
     if control then
       local params = control.parameters.parameters
       if params[1] and params[1].count then
-        local count,interval,mod,reset = params[1].count or 1, params[2].count or 1, params[3].count or 1, params[4].count or 0
+        local count,interval,mod,reset,output = params[1].count or 1, params[2].count or 1, params[3].count or 1, params[4].count or 0, params[5].signal
         if control.enabled then
           if (mod < 1) then mod = 1 end
-          if (mod > 15) then mod = 15 end
+          if (mod > 60) then mod = 60 end
           if (interval < 1) then interval = 1 end
           if (interval > 15) then interval = 15 end
           local t = math.floor(60 * (interval / mod))
@@ -27,13 +27,17 @@ classes["timer-combinator"] = {
               count = 0
               out = 1
             end
+            local sig = {type = "virtual", name = "output-signal"}
+            if output.name then
+              sig = output
+            end
             control.parameters = {
               parameters = {
                 {signal = {type = "virtual", name = "counting-signal"}, count = (count + 1), index = 1},
                 {signal = {type = "virtual", name = "interval-signal"}, count = interval, index = 2},
                 {signal = {type = "virtual", name = "time-mod-signal"}, count = mod, index = 3},
                 {signal = {type = "virtual", name = "reset-signal"}, count = reset, index = 4},
-                {signal = {type = "virtual", name = "output-signal"}, count = out, index = 5}
+                {signal = sig, count = out, index = 5}
               }
             }
           end
@@ -61,7 +65,7 @@ classes["counting-combinator"] = {
     if control then
       local params = control.parameters.parameters
       if params[1] and params[1].count then
-        local count,reset = params[1].count or 1, params[2].count or 0
+        local count,reset,output = params[1].count or 1, params[2].count or 0, params[3].signal
         if control.enabled then
         if (reset <= 0) then reset = 0 end
         if count < 0 then count = 0 end
@@ -76,11 +80,15 @@ classes["counting-combinator"] = {
           count = reset
           out = 1
         end
+        local sig = {type = "virtual", name = "output-signal"}
+        if output.name then
+          sig = output
+        end
         control.parameters = {
           parameters = {
             {signal = {type = "virtual", name = "counting-signal"}, count = count, index = 1},
             {signal = {type = "virtual", name = "reset-signal"}, count = reset, index = 2},
-            {signal = {type = "virtual", name = "output-signal"}, count = out, index = 3}
+            {signal = sig, count = out, index = 3}
           }
         }
         end
