@@ -21,11 +21,12 @@ classes["timer-combinator"] = {
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Timer Combinator"}
       local layout = uc.add{type = "table", name = "timer-combinator", colspan = 2}
-      layout.add{type = "label", caption = "Reset Count: "}
+      layout.add{type = "label", caption = "Reset Count: (?)", tooltip = {"timer-combinator.reset"}}
       layout.add{type = "textfield", name = "reset", style = "uc_text", text = object.meta.reset}
-      layout.add{type = "label", caption = "Update Interval: "}
+      layout.add{type = "label", caption = "Update Interval: (?)", tooltip = {"timer-combinator.ticks"}}
       layout.add{type = "textfield", name = "ticks", style = "uc_text", text = object.meta.ticks}
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
+      layout.add{type = "label", caption = "(extra info)", tooltip = {"timer-combinator.extra"}}
     end
   end,
   on_place = function(entity)
@@ -87,9 +88,10 @@ classes["counting-combinator"] = {
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Counting Combinator"}
       local layout = uc.add{type = "table", name = "counting-combinator", colspan = 2}
-      layout.add{type = "label", caption = "Reset At: "}
+      layout.add{type = "label", caption = "Reset: (?)", tooltip = {"counting-combinator.reset"}}
       layout.add{type = "textfield", name = "reset", style = "uc_text", text = object.meta.reset}
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
+      layout.add{type = "label", caption = "(extra info)", tooltip = {"counting-combinator.extra"}}
     end
   end,
   on_place = function(entity)
@@ -156,23 +158,23 @@ classes["random-combinator"] = {
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Random Combinator"}
       local layout = uc.add{type = "table", name = "random-combinator", colspan = 2}
-      layout.add{type = "label", caption = "Trigger: "}
+      layout.add{type = "label", caption = "Trigger: (?)", tooltip = {"random-combinator.trigger"}}
       if params[1].signal and params[1].signal.name then
         layout.add{type = "choose-elem-button", name = "signal1", elem_type = "signal", signal = params[1].signal}
       else
         layout.add{type = "choose-elem-button", name = "signal1", elem_type = "signal"}
       end
-      layout.add{type = "label", caption = "Output Signal: "}
+      layout.add{type = "label", caption = "Output: (?)", tooltip = {"random-combinator.output"}}
       if params[2].signal and params[2].signal.name then
         layout.add{type = "choose-elem-button", name = "signal2", elem_type = "signal", signal = params[2].signal}
       else
         layout.add{type = "choose-elem-button", name = "signal2", elem_type = "signal"}
       end
-      layout.add{type = "label", caption = "Lower Limit: "}
+      layout.add{type = "label", caption = "Lower Limit: (?)", tooltip = {"random-combinator.lower"}}
       layout.add{type = "textfield", name = "lower", style = "uc_text", text = object.meta.range.minimum}
-      layout.add{type = "label", caption = "Upper  Limit: "}
+      layout.add{type = "label", caption = "Upper  Limit: (?)", tooltip = {"random-combinator.upper"}}
       layout.add{type = "textfield", name = "upper", style = "uc_text", text = object.meta.range.maximum}
-      layout.add{type = "label", caption = "Ticks: "}
+      layout.add{type = "label", caption = "Ticks: (?)", tooltip = {"random-combinator.ticks"}}
       layout.add{type = "textfield", name = "ticks", style = "uc_text", text = object.meta.ticks}
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
@@ -245,7 +247,7 @@ classes["min-combinator"] = {
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Min Combinator"}
       local layout = uc.add{type = "table", name = "min-combinator", colspan = 6}
-      layout.add{type = "label", caption = "Filter: "}
+      layout.add{type = "label", caption = "Filter: (?)", tooltip = {"min-combinator.filter"}}
       for i = 1,5 do
         if params[i].signal and params[i].signal.name then
           layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
@@ -328,7 +330,7 @@ classes["max-combinator"] = {
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Max Combinator"}
       local layout = uc.add{type = "table", name = "max-combinator", colspan = 6}
-      layout.add{type = "label", caption = "Filter: "}
+      layout.add{type = "label", caption = "Filter: (?)", tooltip = {"max-combinator.filter"}}
       for i = 1,5 do
         if params[i].signal and params[i].signal.name then
           layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
@@ -1064,13 +1066,13 @@ classes["converter-combinator"] = {
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Converter Combinator"}
       local layout = uc.add{type = "table", name = "converter-combinator", colspan = 4}
-      layout.add{type = "label", caption = "From: "}
+      layout.add{type = "label", caption = "From: (?)", tooltip = {"converter-combinator.from"}}
       if params[1].signal and params[1].signal.name then
         layout.add{type = "choose-elem-button", name = "from", elem_type = "signal", signal = params[1].signal}
       else
         layout.add{type = "choose-elem-button", name = "from", elem_type = "signal"}
       end
-      layout.add{type = "label", caption = "To: "}
+      layout.add{type = "label", caption = "To: (?)", tooltip = {"converter-combinator.to"}}
       if params[2].signal and params[2].signal.name then
         layout.add{type = "choose-elem-button", name = "to", elem_type = "signal", signal = params[2].signal}
       else
@@ -1117,22 +1119,22 @@ classes["converter-combinator"] = {
 classes["detector-combinator"] = {
   on_click = function(player, object)
     local gui = player.gui.center
-    if gui["uc"]["sensor-combinator"]["signal"].elem_value and gui["uc"]["sensor-combinator"]["signal"].elem_value.name then
-      object.meta.signal = gui["uc"]["sensor-combinator"]["signal"].elem_value
+    if gui["uc"]["detector-combinator"]["signal"].elem_value and gui["uc"]["detector-combinator"]["signal"].elem_value.name then
+      object.meta.signal = gui["uc"]["detector-combinator"]["signal"].elem_value
     else
       object.meta.signal = {type = "virtual"}
     end
-    object.meta.radius = tonumber(gui["uc"]["sensor-combinator"]["radius"].text) or object.meta.radius
+    object.meta.radius = tonumber(gui["uc"]["detector-combinator"]["radius"].text) or object.meta.radius
   end,
   on_key = function(player, object)
     if not (player.gui.center["uc"]) then
       local meta = object.meta
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Detector Combinator"}
-      local layout = uc.add{type = "table", name = "sensor-combinator", colspan = 4}
-      layout.add{type = "label", caption = "Radius: "}
+      local layout = uc.add{type = "table", name = "detector-combinator", colspan = 4}
+      layout.add{type = "label", caption = "Radius: (?)", tooltip = {"detector-combinator.radius"}}
       layout.add{type = "textfield", name = "radius", style = "uc_text", text = meta.radius}
-      layout.add{type = "label", caption = "Signal: "}
+      layout.add{type = "label", caption = "Signal: (?)", tooltip = {"detector-combinator.signal"}}
       if meta.signal and meta.signal.name then
         layout.add{type = "choose-elem-button", name = "signal", elem_type = "signal", signal = meta.signal}
       else
@@ -1203,9 +1205,9 @@ classes["sensor-combinator"] = {
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Sensor Combinator"}
       local layout = uc.add{type = "table", name = "sensor-combinator", colspan = 4}
-      layout.add{type = "label", caption = "Radius: "}
+      layout.add{type = "label", caption = "Radius: (?)", tooltip = {"sensor-combinator.radius"}}
       layout.add{type = "textfield", name = "radius", style = "uc_text", text = meta.radius}
-      layout.add{type = "label", caption = "Signal: "}
+      layout.add{type = "label", caption = "Signal: (?)", tooltip = {"sensor-combinator.signal"}}
       if meta.signal and meta.signal.name then
         layout.add{type = "choose-elem-button", name = "signal", elem_type = "signal", signal = meta.signal}
       else
@@ -1279,7 +1281,7 @@ classes["railway-combinator"] = {
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Railway Combinator"}
       local layout = uc.add{type = "table", name = "railway-combinator", colspan = 2}
-      layout.add{type = "label", caption = "Output: "}
+      layout.add{type = "label", caption = "Output: (?)", tooltip = {"railway-combinator.output"}}
       if meta.signal and meta.signal.name then
         layout.add{type = "choose-elem-button", name = "signal", elem_type = "signal", signal = meta.signal}
       else
@@ -1347,7 +1349,7 @@ classes["color-combinator"] = {
       local layout = uc.add{type = "table", name = "color-combinator", colspan = 4}
       for i = 1,6 do
         if i == 1 then
-          layout.add{type = "label", caption = "Red: "}
+          layout.add{type = "label", caption = "Red: (?)", tooltip = {"color-combinator.red"}}
           if params[i].signal and params[i].signal.name then  
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
           else
@@ -1356,7 +1358,7 @@ classes["color-combinator"] = {
           layout.add{type = "label", caption = " = "}
           layout.add{type = "textfield", name = "count"..i, style = "uc_text", text = params[i].count or 0}
         elseif i == 2 then
-          layout.add{type = "label", caption = "Green: "}
+          layout.add{type = "label", caption = "Green: (?)", tooltip = {"color-combinator.green"}}
           if params[i].signal and params[i].signal.name then  
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
           else
@@ -1365,7 +1367,7 @@ classes["color-combinator"] = {
           layout.add{type = "label", caption = " = "}
           layout.add{type = "textfield", name = "count"..i, style = "uc_text", text = params[i].count or i}
         elseif i == 3 then
-          layout.add{type = "label", caption = "Blue: "}
+          layout.add{type = "label", caption = "Blue: (?)", tooltip = {"color-combinator.blue"}}
           if params[i].signal and params[i].signal.name then  
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
           else
@@ -1374,7 +1376,7 @@ classes["color-combinator"] = {
           layout.add{type = "label", caption = " = "}
           layout.add{type = "textfield", name = "count"..i, style = "uc_text", text = params[i].count or i}
         elseif i == 4 then
-          layout.add{type = "label", caption = "Yellow: "}
+          layout.add{type = "label", caption = "Yellow: (?)", tooltip = {"color-combinator.yellow"}}
           if params[i].signal and params[i].signal.name then  
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
           else
@@ -1383,7 +1385,7 @@ classes["color-combinator"] = {
           layout.add{type = "label", caption = " = "}
           layout.add{type = "textfield", name = "count"..i, style = "uc_text", text = params[i].count or i}
         elseif i == 5 then
-          layout.add{type = "label", caption = "Magenta: "}
+          layout.add{type = "label", caption = "Magenta: (?)", tooltip = {"color-combinator.magenta"}}
           if params[i].signal and params[i].signal.name then  
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
           else
@@ -1392,7 +1394,7 @@ classes["color-combinator"] = {
           layout.add{type = "label", caption = " = "}
           layout.add{type = "textfield", name = "count"..i, style = "uc_text", text = params[i].count or i}
         elseif i == 6 then
-          layout.add{type = "label", caption = "Cyan: "}
+          layout.add{type = "label", caption = "Cyan: (?)", tooltip = {"color-combinator.cyan"}}
           if params[i].signal and params[i].signal.name then  
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
           else
@@ -1495,13 +1497,13 @@ classes["emitter-combinator"] = {
       local params = object.meta.params
       local uc = gui.add{type = "frame", name = "uc", caption = "Emitter Combinator"}
       local layout = uc.add{type = "table", name = "emitter-combinator", colspan = 8}
-      layout.add{type = "label", caption = "Signal: "}
+      layout.add{type = "label", caption = "Signal: (?)", tooltip = {"emitter-combinator.signal"}}
       if params[1] and params[1].signal then  
         layout.add{type = "choose-elem-button", name = "signal1", elem_type = "signal", signal = params[1].signal}
       else
         layout.add{type = "choose-elem-button", name = "signal1", elem_type = "signal"}
       end
-      layout.add{type = "label", caption = "Filter: "}
+      layout.add{type = "label", caption = "Filter: (?)", tooltip = {"emitter-combinator.filter"}}
       for i= 2,6 do
         if params[i] and params[i].signal then
           layout.add{type = "choose-elem-button", name = "signal" .. i, elem_type = "signal", signal = params[i].signal}
@@ -1550,7 +1552,7 @@ classes["receiver-combinator"] = {
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Receiver Combinator"}
       local layout = uc.add{type = "table", name = "receiver-combinator", colspan = 2}
-      layout.add{type = "label", caption = "Signal: "}
+      layout.add{type = "label", caption = "Signal: (?)", tooltip = {"receiver-combinator.signal"}}
       layout.add{type = "choose-elem-button", name = "signal", elem_type = "signal", signal = object.meta.signal}
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
@@ -1610,7 +1612,7 @@ classes["power-combinator"] = {
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Power Combinator"}
       local layout = uc.add{type = "table", name = "power-combinator", colspan = 2}
-      layout.add{type = "label", caption = "Ticks: "}
+      layout.add{type = "label", caption = "Ticks: (?)", tooltip = {"power-combinator.ticks"}}
       layout.add{type = "textfield", name = "ticks", style = "uc_text", text = object.meta.ticks}
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
@@ -1722,13 +1724,13 @@ classes["daytime-combinator"] = {
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Daytime Combinator"}
       local layout = uc.add{type = "table", name = "daytime-combinator", colspan = 2}
-      layout.add{type = "label", caption = "Minutes Signal: "}
+      layout.add{type = "label", caption = "Minutes: (?)", tooltip = {"daytime-combinator.minutes"}}
       if meta.minutes and meta.minutes.name then
         layout.add{type = "choose-elem-button", name = "minutes", elem_type = "signal", signal = meta.minutes}
       else
         layout.add{type = "choose-elem-button", name = "minutes", elem_type = "signal"}
       end
-      layout.add{type = "label", caption = "Hours Signal: "}
+      layout.add{type = "label", caption = "Hours: (?)", tooltip = {"daytime-combinator.hours"}}
       if meta.hours and meta.hours.name then
         layout.add{type = "choose-elem-button", name = "hours", elem_type = "signal", signal = meta.hours}
       else
@@ -1769,6 +1771,63 @@ classes["daytime-combinator"] = {
         parameters = {
           {signal = {type = "virtual", name = "signal-M"}, count = 0, index = 1},
           {signal = {type = "virtual", name = "signal-H"}, count = 0, index = 2}
+        }
+      }
+    end
+  end
+}
+
+classes["pollution-combinator"] = {
+  on_click = function(player, object)
+    local gui = player.gui.center
+    if gui["uc"]["pollution-combinator"]["output"].elem_value and gui["uc"]["pollution-combinator"]["output"].elem_value.name then
+      object.meta.minutes = gui["uc"]["pollution-combinator"]["output"].elem_value
+    else
+      object.meta.minutes = {type = "virtual"}
+    end
+  end,
+  on_key = function(player, object)
+    if not (player.gui.center["uc"]) then
+      local meta = object.meta
+      local gui = player.gui.center
+      local uc = gui.add{type = "frame", name = "uc", caption = "Pollution Combinator"}
+      local layout = uc.add{type = "table", name = "pollution-combinator", colspan = 2}
+      layout.add{type = "label", caption = "Output: (?)", tooltip = {"pollution-combinator.output"}}
+      if meta.output and meta.output.name then
+        layout.add{type = "choose-elem-button", name = "output", elem_type = "signal", signal = meta.output}
+      else
+        layout.add{type = "choose-elem-button", name = "output", elem_type = "signal"}
+      end
+      layout.add{type = "button", name = "uc-exit", caption = "Ok"}
+    end
+  end,
+  on_place = function(entity)
+    return {
+      meta = {
+        entity = entity,
+        output = {type = "virtual", name = "output-signal"}
+      }
+    }
+  end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.meta.entity.get_control_behavior()
+    if control then
+      if control.enabled then
+        local slots = {}
+        local meta = object.meta
+        local pollution = meta.entity.surface.get_pollution(meta.entity.position)
+        if meta.output and meta.output.name then
+          table.insert(slots, {signal = meta.output, count = pollution, index = 1})
+        end
+        control.parameters = {
+          parameters = slots
+        }
+      end
+    else
+      control.parameters = {
+        parameters = {
+          {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 1}
         }
       }
     end
