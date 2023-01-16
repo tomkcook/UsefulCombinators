@@ -613,14 +613,14 @@ function get_signals(control)
   local red = control.get_circuit_network(defines.wire_type.red)
   local green = control.get_circuit_network(defines.wire_type.green)
   local network = {}
-  if red then
+  if red and red.signals then
     for _,v in pairs(red.signals) do
       if v.signal.name then
         network[v.signal.name] = v
       end
     end
   end
-  if green then
+  if green and green.signals then
     for _,v in pairs(green.signals) do
       if v.signal.name then
         network[v.signal.name] = v
