@@ -1791,10 +1791,12 @@ function entity_removed(event)
         table.remove(tab, k)
         classes[event.entity.name].on_destroy(v)
         data[event.entity.name] = tab
-        if selected[v.meta.entity] and selected[v.meta.entity].player.gui.center["uc"] then
-          selected[v.meta.entity].player.gui.center["uc"].destroy()
+        for i,j in pairs(selected) do
+          if j.entity == v.meta.entity then
+            j.player.gui.center["uc"].destroy()
+            table.remove(selected, i)
+          end
         end
-        selected[v.meta.entity] = nil
         save()
         break
       end
@@ -1855,11 +1857,13 @@ function onKey(event)
         if k == entity.name then
           for h,i in pairs(data[k]) do
             if i.meta.entity.valid then
-              if not (player.gui.center["uc"]) then
-                v.on_key(player, i)
-                selected[i.meta.entity] = { player = player, entity = i.meta.entity }
+              if i.meta.entity == entity then
+                if not (player.gui.center["uc"]) then
+                  table.insert(selected, { player = player, entity = entity})
+                  v.on_key(player, i)
+                end
+                return
               end
-              return
             end
           end
         end
@@ -1875,10 +1879,12 @@ function on_click(event)
     for k,v in pairs(classes) do
       if data and data[k] then
         for h,i in pairs(data[k]) do
-          if selected[i.meta.entity] and (i.meta.entity == selected[i.meta.entity].entity) then
-            v.on_click(player, i)
-            selected[i.meta.entity] = nil
-            break
+          for l,m in pairs(selected) do
+            if i.meta.entity == m.entity then
+              v.on_click(player, i)
+              table.remove(selected, l)
+              break
+            end
           end
         end
       end
