@@ -1169,7 +1169,7 @@ classes["detector-combinator"] = {
           end
           local slots = {}
           local pos = object.meta.entity.position
-          local units = #object.meta.entity.surface.find_enemy_units(object.entity.position, r + 0.5)
+          local units = #object.meta.entity.surface.find_enemy_units(object.meta.entity.position, r + 0.5)
           if signal.name then
             table.insert(slots, {signal = signal, count = units, index = 1})
           end
@@ -1569,9 +1569,9 @@ classes["receiver-combinator"] = {
     local control = object.meta.entity.get_control_behavior()
     if control then
       local params = control.parameters.parameters
-      if object.meta.params[1].signal.name then
+      if object.meta.signal.name then
         local slots = {}
-        local p1 = object.meta.params[1]
+        local p1 = object.meta.signal
         if control.enabled then
           local sender
           for k,v in pairs(data["emitter-combinator"]) do
@@ -1776,10 +1776,10 @@ end
 
 function entity_built(event)
   if classes[event.created_entity.name] ~= nil then
-      local tab = data[event.created_entity.name] or {}
-      table.insert(tab, classes[event.created_entity.name].on_place(event.created_entity))
-      data[event.created_entity.name] = tab
-      save()
+    local tab = data[event.created_entity.name] or {}
+    table.insert(tab, classes[event.created_entity.name].on_place(event.created_entity))
+    data[event.created_entity.name] = tab
+    save()
   end
 end
 
@@ -1830,18 +1830,18 @@ function configuration_changed(cfg)
     local changes = cfg.mod_changes["UsefulCombinators"]
     if changes then
       init()
-      if not global["uc_data"] then
+      if global["uc_data"] then
         for k,v in pairs(classes) do
-          local tab = data[k]
+          local tab = {}
           for _,s in pairs(game.surfaces) do
             for i,j in pairs(s.find_entities_filtered({name = k})) do
               table.insert(tab, classes[k].on_place(j))
               data[k] = tab
             end
           end
+          save()
         end
       end
-      save()
     end
   end
 end
@@ -1907,7 +1907,6 @@ end]]
 
 script.on_init(init)
 script.on_load(uc_load)
-script.on_configuration_changed(configuration_changed)
 script.on_event(defines.events.on_built_entity, entity_built)
 script.on_event(defines.events.on_robot_built_entity, entity_built)
 script.on_event(defines.events.on_preplayer_mined_item, entity_removed)
@@ -1917,3 +1916,4 @@ script.on_event(defines.events.on_tick, tick)
 script.on_event(defines.events.on_gui_click, on_click)
 --script.on_event(defines.events.on_entity_settings_pasted, on_paste)
 script.on_event("uc-key", onKey)
+script.on_configuration_changed(configuration_changed)
