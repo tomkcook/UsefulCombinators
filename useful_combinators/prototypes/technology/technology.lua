@@ -2,7 +2,7 @@ data:extend({
   {
     type = "technology",
     name = "useful-combinators",
-    icon = "__UsefulCombinators__/graphics/technology/clock.png",
+    icon = "__UsefulCombinators__/graphics/technology/tech.png",
     effects =
     {
       {
@@ -16,11 +16,7 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "random-combinator"
-      }--[[,
-      {
-        type = "unlock-recipe",
-        recipe = "logic-combinator"
-      }]],
+      },
       {
         type = "unlock-recipe",
         recipe = "comparator-combinator"
