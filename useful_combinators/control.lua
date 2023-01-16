@@ -1049,15 +1049,17 @@ classes["xor-gate-combinator"] = {
 classes["converter-combinator"] = {
   on_click = function(player, object)
     local gui = player.gui.center
-    if gui["uc"]["converter-combinator"]["from"].elem_value and gui["uc"]["converter-combinator"]["from"].elem_value.name then
-      object.meta.params[1] = {signal = gui["uc"]["converter-combinator"]["from"].elem_value}
-    else
-      object.meta.params[1] = {type = "virtual"}
-    end
-    if gui["uc"]["converter-combinator"]["to"].elem_value and gui["uc"]["converter-combinator"]["to"].elem_value.name then
-      object.meta.params[2] = {signal = gui["uc"]["converter-combinator"]["to"].elem_value}
-    else
-      object.meta.params[2] = {type = "virtual"}
+    for i = 1,5 do
+      if gui["uc"]["converter-combinator"]["from"..i].elem_value and gui["uc"]["converter-combinator"]["from"..i].elem_value.name then
+        object.meta.params["from"][i] = {signal = gui["uc"]["converter-combinator"]["from"..i].elem_value}
+      else
+        object.meta.params["from"][i] = {type = "virtual"}
+      end
+      if gui["uc"]["converter-combinator"]["to"..i].elem_value and gui["uc"]["converter-combinator"]["to"..i].elem_value.name then
+        object.meta.params["to"][i] = {signal = gui["uc"]["converter-combinator"]["to"..i].elem_value}
+      else
+        object.meta.params["to"][i] = {type = "virtual"}
+      end
     end
   end,
   on_key = function(player, object)
@@ -1065,18 +1067,20 @@ classes["converter-combinator"] = {
       local params = object.meta.params
       local gui = player.gui.center
       local uc = gui.add{type = "frame", name = "uc", caption = "Converter Combinator"}
-      local layout = uc.add{type = "table", name = "converter-combinator", colspan = 4}
+      local layout = uc.add{type = "table", name = "converter-combinator", colspan = 2}
       layout.add{type = "label", caption = "From: (?)", tooltip = {"converter-combinator.from"}}
-      if params[1].signal and params[1].signal.name then
-        layout.add{type = "choose-elem-button", name = "from", elem_type = "signal", signal = params[1].signal}
-      else
-        layout.add{type = "choose-elem-button", name = "from", elem_type = "signal"}
-      end
       layout.add{type = "label", caption = "To: (?)", tooltip = {"converter-combinator.to"}}
-      if params[2].signal and params[2].signal.name then
-        layout.add{type = "choose-elem-button", name = "to", elem_type = "signal", signal = params[2].signal}
-      else
-        layout.add{type = "choose-elem-button", name = "to", elem_type = "signal"}
+      for i = 1,5 do
+        if params["from"][i].signal and params["from"][i].signal.name then
+          layout.add{type = "choose-elem-button", name = "from"..i, elem_type = "signal", signal = params["from"][i].signal}
+        else
+          layout.add{type = "choose-elem-button", name = "from"..i, elem_type = "signal"}
+        end
+        if params["to"][i].signal and params["to"][i].signal.name then
+          layout.add{type = "choose-elem-button", name = "to"..i, elem_type = "signal", signal = params["to"][i].signal}
+        else
+          layout.add{type = "choose-elem-button", name = "to"..i, elem_type = "signal"}
+        end
       end
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
@@ -1086,8 +1090,20 @@ classes["converter-combinator"] = {
       meta = {
         entity = entity,
         params = {
-          {signal = {type = "virtual"}},
-          {signal = {type = "virtual"}}
+          from = {
+            {signal = {type = "virtual"}},
+            {signal = {type = "virtual"}},
+            {signal = {type = "virtual"}},
+            {signal = {type = "virtual"}},
+            {signal = {type = "virtual"}}
+          },
+          to = {
+            {signal = {type = "virtual"}},
+            {signal = {type = "virtual"}},
+            {signal = {type = "virtual"}},
+            {signal = {type = "virtual"}},
+            {signal = {type = "virtual"}}
+          }
         }
       }
     }
@@ -1096,17 +1112,36 @@ classes["converter-combinator"] = {
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
-      local params = object.meta.params
-      if params[2].signal then
-        if control.enabled then
-          local slots = {}
-          if params[2].signal.name then
-            table.insert(slots, {signal = params[2].signal, count = get_count(control, params[1].signal), index = 1})
+      if control.enabled then
+        local slots = {}
+        local params = object.meta.params
+        if not params["from"] and not params["to"] then
+          object.meta.params = {
+            from = {
+              {signal = {type = "virtual"}},
+              {signal = {type = "virtual"}},
+              {signal = {type = "virtual"}},
+              {signal = {type = "virtual"}},
+              {signal = {type = "virtual"}}
+            },
+            to = {
+              {signal = {type = "virtual"}},
+              {signal = {type = "virtual"}},
+              {signal = {type = "virtual"}},
+              {signal = {type = "virtual"}},
+              {signal = {type = "virtual"}}
+            }
+          }
+          params = object.meta.params
+        end
+        for i = 1,5 do
+          if params["to"][i].signal and params["to"][i].signal.name then
+            table.insert(slots, {signal = params["to"][i].signal, count = get_count(control, params["from"][i].signal), index = i})
           end
-          control.parameters = {
+        end
+        control.parameters = {
             parameters = slots
           }
-        end
       else
         control.parameters = {
           parameters = {}

@@ -479,7 +479,7 @@ data:extend({
     collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
-    item_slot_count = 1,
+    item_slot_count = 5,
     
     sprites =
     {
