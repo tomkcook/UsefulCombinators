@@ -10,7 +10,7 @@ require("prototypes.styles.default")
 data:extend({
   {
     type = "custom-input",
-    name = "uc-key",
-    key_sequence = "SHIFT + Z",
-  },
+    name = "uc-edit",
+    key_sequence = "mouse-button-1",
+  }
 })
