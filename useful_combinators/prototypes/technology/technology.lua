@@ -12,11 +12,19 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "counting-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "random-combinator"
       }--[[,
       {
         type = "unlock-recipe",
-        recipe = "pulse-decider-combinator"
-      }]]
+        recipe = "logic-combinator"
+      }]],
+      {
+        type = "unlock-recipe",
+        recipe = "comparator-combinator"
+      }
     },
     prerequisites = {"circuit-network"},
     unit =
