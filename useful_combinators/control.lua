@@ -833,6 +833,113 @@ classes["color-combinator"] = {
   end
 }
 
+classes["emitter-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[1].signal.name then
+        local p1,p2,p3,p4,p5,p6 = params[1],params[2],params[3],params[4],params[5],params[6]
+        if control.enabled then
+          local slots = {}
+          if p1.signal.name then
+            table.insert(slots, {signal = p1.signal, count = 0, index = 1})
+            for k,v in pairs(data[object.entity.name]) do
+              if not (v.entity == object.entity) then
+                if p1.signal.name == v.entity.get_control_behavior().parameters.parameters[1].signal.name then
+                  slots = {}
+                  break
+                end
+              end
+            end
+          end
+          if p2.signal.name then
+            table.insert(slots, {signal = p2.signal, count = 0, index = 2})
+          end
+          if p3.signal.name then
+            table.insert(slots, {signal = p3.signal, count = 0, index = 3})
+          end
+          if p4.signal.name then
+            table.insert(slots, {signal = p4.signal, count = 0, index = 4})
+          end
+          if p5.signal.name then
+            table.insert(slots, {signal = p5.signal, count = 0, index = 5})
+          end
+          if p6.signal.name then
+            table.insert(slots, {signal = p6.signal, count = 0, index = 6})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {}
+        }
+      end
+    end
+  end
+}
+
+classes["receiver-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[1].signal.name then
+        local slots = {}
+        local p1 = params[1]
+        if control.enabled then
+          if p1.signal.name then
+            table.insert(slots, {signal = p1.signal, count = 0, index = 1})
+          end
+          local sender
+          for k,v in pairs(data["emitter-combinator"]) do
+            local c = v.entity.get_control_behavior()
+            local p = c.parameters.parameters
+            if p1.signal.name == p[1].signal.name then
+              sender = c
+              break;
+            end
+          end
+          if sender then
+            local p = sender.parameters.parameters
+            local p2,p3,p4,p5,p6 = p[2],p[3],p[4],p[5],p[6]
+            if p2.signal.name then
+              table.insert(slots, {signal = p2.signal, count = get_count(sender, p2.signal), index = 2})
+            end
+            if p3.signal.name then
+              table.insert(slots, {signal = p3.signal, count = get_count(sender, p3.signal), index = 3})
+            end
+            if p4.signal.name then
+              table.insert(slots, {signal = p4.signal, count = get_count(sender, p4.signal), index = 4})
+            end
+            if p5.signal.name then
+              table.insert(slots, {signal = p5.signal, count = get_count(sender, p5.signal), index = 5})
+            end
+            if p6.signal.name then
+              table.insert(slots, {signal = p6.signal, count = get_count(sender, p6.signal), index = 6})
+            end
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "signal-0"}, count = 0, index = 1}
+          }
+        }
+      end
+    end
+  end
+}
+
 function parse(a, op, b)
   if op == "lt-signal" then
     if a < b then

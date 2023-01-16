@@ -197,5 +197,27 @@ data:extend(
     place_result="railway-combinator",
     order = "d[railway]",
     stack_size= 50,
+  },
+  {
+    type = "item",
+    name = "emitter-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/emitter-combinator.png",
+    flags = { "goes-to-quickbar" },
+    group = "useful-combinators",
+    subgroup = "other",
+    place_result="emitter-combinator",
+    order = "f[emitter]",
+    stack_size= 50,
+  },
+  {
+    type = "item",
+    name = "receiver-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/receiver-combinator.png",
+    flags = { "goes-to-quickbar" },
+    group = "useful-combinators",
+    subgroup = "other",
+    place_result="receiver-combinator",
+    order = "g[receiver]",
+    stack_size= 50,
   }
 }) 

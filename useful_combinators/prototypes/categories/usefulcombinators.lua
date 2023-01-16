@@ -16,14 +16,14 @@ data:extend(
 	},
   {
 		type = "item-subgroup",
-		name = "other",
-		group = "useful-combinators",
-		order = "c",
-	},
-  {
-		type = "item-subgroup",
 		name = "logic-gates",
 		group = "useful-combinators",
 		order = "b",
 	},
+  {
+		type = "item-subgroup",
+		name = "other",
+		group = "useful-combinators",
+		order = "c",
+	}
 })

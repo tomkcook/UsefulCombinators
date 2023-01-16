@@ -77,6 +77,14 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "color-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "emitter-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "receiver-combinator"
       }
     },
     prerequisites = {"circuit-network"},
