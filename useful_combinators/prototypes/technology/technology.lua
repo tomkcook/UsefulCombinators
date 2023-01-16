@@ -2,7 +2,8 @@ data:extend({
   {
     type = "technology",
     name = "useful-combinators",
-    icon = "__UsefulCombinators__/graphics/technology/tech.png",
+    icon = "__UsefulCombinators__/graphics/technology/clock.png",
+    icon_size = 64,
     effects =
     {
       {
