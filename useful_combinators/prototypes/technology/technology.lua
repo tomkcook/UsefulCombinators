@@ -20,10 +20,6 @@ data:extend({
       },
       {
         type = "unlock-recipe",
-        recipe = "comparator-combinator"
-      },
-      {
-        type = "unlock-recipe",
         recipe = "converter-combinator"
       },
       {

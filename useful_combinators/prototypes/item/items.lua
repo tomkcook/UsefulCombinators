@@ -46,17 +46,6 @@ data:extend(
   },
   {
     type = "item",
-    name = "comparator-combinator",
-    icon = "__UsefulCombinators__/graphics/icons/comparator-combinator.png",
-    flags = { "goes-to-quickbar" },
-    group = "useful-combinators",
-    subgroup = "main",
-    place_result="comparator-combinator",
-    order = "d[comparator]",
-    stack_size= 50,
-  },
-  {
-    type = "item",
     name = "converter-combinator",
     icon = "__UsefulCombinators__/graphics/icons/converter-combinator.png",
     flags = { "goes-to-quickbar" },
@@ -226,9 +215,9 @@ data:extend(
     icon = "__UsefulCombinators__/graphics/icons/power-combinator.png",
     flags = { "goes-to-quickbar" },
     group = "useful-combinators",
-    subgroup = "other2",
+    subgroup = "main",
     place_result="power-combinator",
-    order = "a[power]",
+    order = "d[power]",
     stack_size= 50,
   }
 }) 
