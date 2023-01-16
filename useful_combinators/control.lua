@@ -66,12 +66,16 @@ classes["counting-combinator"] = {
         if (reset <= 0) then reset = 0 end
         if count < 0 then count = 0 end
         local out = 0
-        if reset > 0 and count >= reset then
+        if reset > 0 and count > reset then
           count = 0
           out = 1
         end
         count = count - get_count(control, {type = "virtual", name = "minus-one-signal"})
         count = count + get_count(control, {type = "virtual", name = "plus-one-signal"})
+        if reset > 0 and count == -1 then
+          count = reset
+          out = 1
+        end
         control.parameters = {
           parameters = {
             {signal = {type = "virtual", name = "counting-signal"}, count = count, index = 1},
