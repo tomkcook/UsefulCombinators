@@ -69,6 +69,10 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "sensor-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "railway-combinator"
       }
     },
     prerequisites = {"circuit-network"},
