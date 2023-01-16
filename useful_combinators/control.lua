@@ -185,6 +185,90 @@ classes["comparator-combinator"] = {
   end
 }
 
+classes["min-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[1].signal.name then
+        local p1 = params[1]
+        if control.enabled then
+          local slots = {}
+          if p1.signal.name then
+            local signals = get_signals(control)
+            local signal = {type = "virtual", name = "blank"}
+            local count = -math.huge
+            for k,v in pairs(signals) do
+              count = math.max(count, v.count)
+              if count == v.count then
+                signal = v.signal
+              end
+            end
+            count = 1
+            if signal.name == "blank" then
+              count = 0
+            end
+            table.insert(slots, {signal = signal, count = count, index = 1})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "blank"}, count = 0, index = 1}
+          }
+        }
+      end
+    end
+  end
+}
+
+classes["max-combinator"] = {
+  on_place = function(entity) return { entity = entity } end,
+  on_destroy = function() end,
+  on_tick = function(object)
+    local control = object.entity.get_control_behavior()
+    if control then
+      local params = control.parameters.parameters
+      if params[1].signal.name then
+        local p1 = params[1]
+        if control.enabled then
+          local slots = {}
+          if p1.signal.name then
+            local signals = get_signals(control)
+            local signal = {type = "virtual", name = "blank"}
+            local count = -math.huge
+            for k,v in pairs(signals) do
+              count = math.max(count, v.count)
+              if count == v.count then
+                signal = v.signal
+              end
+            end
+            count = 1
+            if signal.name == "blank" then
+              count = 0
+            end
+            table.insert(slots, {signal = signal, count = count, index = 1})
+          end
+          control.parameters = {
+            parameters = slots
+          }
+        end
+      else
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "blank"}, count = 0, index = 1}
+          }
+        }
+      end
+    end
+  end
+}
+
 function parse(a, op, b)
   if op == "lt-signal" then
     if a < b then
@@ -233,6 +317,27 @@ function get_count(control, signal)
     val = val + (green.get_signal(signal) or 0)
   end
   return val
+end
+
+function get_signals(control)
+  local red = control.get_circuit_network(defines.wire_type.red)
+  local green = control.get_circuit_network(defines.wire_type.green)
+  local network = {}
+  if red then
+    for _,v in pairs(red.signals) do
+      if v.signal.name then
+        network[v.signal.name] = v
+      end
+    end
+  end
+  if green then
+    for _,v in pairs(green.signals) do
+      if v.signal.name then
+        network[v.signal.name] = v
+      end
+    end
+  end
+  return network
 end
 
 function entity_built(event)

@@ -104,5 +104,12 @@ data:extend(
     icon = "__UsefulCombinators__/graphics/icons/signal/gt-signal.png",
     subgroup = "virtual-signal",
     order = "u[gt]"
+  },
+  {
+    type = "virtual-signal",
+    name = "blank",
+    icon = "__UsefulCombinators__/graphics/icons/signal/blank.png",
+    subgroup = "virtual-signal",
+    order = "u[blank]"
   }
 })

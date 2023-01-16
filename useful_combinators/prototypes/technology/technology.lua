@@ -24,6 +24,14 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "comparator-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "min-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "max-combinator"
       }
     },
     prerequisites = {"circuit-network"},

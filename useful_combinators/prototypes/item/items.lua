@@ -49,5 +49,25 @@ data:extend(
     place_result="comparator-combinator",
     order = "b[combinators]-u[comparator-combinator]",
     stack_size= 10,
+  },
+  {
+    type = "item",
+    name = "min-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/min-combinator.png",
+    flags = { "goes-to-quickbar" },
+    subgroup = "circuit-network",
+    place_result="min-combinator",
+    order = "b[combinators]-u[min-combinator]",
+    stack_size= 10,
+  },
+  {
+    type = "item",
+    name = "max-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/max-combinator.png",
+    flags = { "goes-to-quickbar" },
+    subgroup = "circuit-network",
+    place_result="max-combinator",
+    order = "b[combinators]-u[max-combinator]",
+    stack_size= 10,
   }
 }) 
