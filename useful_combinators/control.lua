@@ -277,7 +277,7 @@ classes["and-gate-combinator"] = {
     if control then
       local params = control.parameters.parameters
       if params[3].signal.name then
-        local p1,p2 = params[1], params[2]
+        local p1,p2,p3 = params[1], params[2], params[3]
         if control.enabled then
           local slots = {}
           local c1,c2 = 0,0
@@ -289,10 +289,12 @@ classes["and-gate-combinator"] = {
             table.insert(slots, {signal = p2.signal, count = 0, index = 2})
             c2 = get_count(control, p2.signal)
           end
-          if (c1 > 0) and (c2 > 0) and (c1 == c2) then
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 3})
-          else
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3})
+          if p3.signal.name then
+            if (c1 > 0) and (c2 > 0) and (c1 == c2) then
+              table.insert(slots, {signal = p3.signal, count = 1, index = 3})
+            else
+              table.insert(slots, {signal = p3.signal, count = 0, index = 3})
+            end
           end
           control.parameters = {
             parameters = slots
@@ -317,7 +319,7 @@ classes["nand-gate-combinator"] = {
     if control then
       local params = control.parameters.parameters
       if params[3].signal.name then
-        local p1,p2 = params[1], params[2]
+        local p1,p2,p3 = params[1], params[2], params[3]
         if control.enabled then
           local slots = {}
           local c1,c2 = 0,0
@@ -329,10 +331,12 @@ classes["nand-gate-combinator"] = {
             table.insert(slots, {signal = p2.signal, count = 0, index = 2})
             c2 = get_count(control, p2.signal)
           end
-          if (c1 > 0) and (c2 > 0) and (c1 == c2) then
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3})
-          else
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 3})
+          if p3.signal.name then
+            if (c1 > 0) and (c2 > 0) and (c1 == c2) then
+              table.insert(slots, {signal = p3.signal, count = 0, index = 3})
+            else
+              table.insert(slots, {signal = p3.signal, count = 1, index = 3})
+            end
           end
           control.parameters = {
             parameters = slots
@@ -357,7 +361,7 @@ classes["nor-gate-combinator"] = {
     if control then
       local params = control.parameters.parameters
       if params[3].signal.name then
-        local p1,p2 = params[1], params[2]
+        local p1,p2,p3 = params[1], params[2], params[3]
         if control.enabled then
           local slots = {}
           local c1,c2 = 0,0
@@ -369,10 +373,12 @@ classes["nor-gate-combinator"] = {
             table.insert(slots, {signal = p2.signal, count = 0, index = 2})
             c2 = get_count(control, p2.signal)
           end
-          if (c1 >= 1) or (c2 >= 1) then
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3})
-          else
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 3})
+          if p3.signal.name then
+            if (c1 >= 1) or (c2 >= 1) then
+              table.insert(slots, {signal = p3.signal, count = 0, index = 3})
+            else
+              table.insert(slots, {signal = p3.signal, count = 1, index = 3})
+            end
           end
           control.parameters = {
             parameters = slots
@@ -397,7 +403,7 @@ classes["not-gate-combinator"] = {
     if control then
       local params = control.parameters.parameters
       if params[2].signal.name then
-        local p1 = params[1]
+        local p1,p2 = params[1], params[2]
         if control.enabled then
           local slots = {}
           local c1 = 0
@@ -405,10 +411,12 @@ classes["not-gate-combinator"] = {
             table.insert(slots, {signal = p1.signal, count = 0, index = 1})
             c1 = get_count(control, p1.signal)
           end
-          if (c1 > 0) then
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 2})
-          else
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 2})
+          if p2.signal.name then
+            if (c1 > 0) then
+              table.insert(slots, {signal = p2.signal, count = 0, index = 2})
+            else
+              table.insert(slots, {signal = p2.signal, count = 1, index = 2})
+            end
           end
           control.parameters = {
             parameters = slots
@@ -433,7 +441,7 @@ classes["or-gate-combinator"] = {
     if control then
       local params = control.parameters.parameters
       if params[3].signal.name then
-        local p1,p2 = params[1], params[2]
+        local p1,p2,p3 = params[1], params[2], params[3]
         if control.enabled then
           local slots = {}
           local c1,c2 = 0,0
@@ -445,10 +453,12 @@ classes["or-gate-combinator"] = {
             table.insert(slots, {signal = p2.signal, count = 0, index = 2})
             c2 = get_count(control, p2.signal)
           end
-          if (c1 >= 1) or (c2 >= 1) then
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 3})
-          else
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3})
+          if p3.signal then
+            if (c1 >= 1) or (c2 >= 1) then
+              table.insert(slots, {signal = p3.signal, count = 1, index = 3})
+            else
+              table.insert(slots, {signal = p3.signal, count = 0, index = 3})
+            end
           end
           control.parameters = {
             parameters = slots
@@ -473,7 +483,7 @@ classes["xnor-gate-combinator"] = {
     if control then
       local params = control.parameters.parameters
       if params[3].signal.name then
-        local p1,p2 = params[1], params[2]
+        local p1,p2,p3 = params[1], params[2], params[3]
         if control.enabled then
           local slots = {}
           local c1,c2 = 0,0
@@ -485,10 +495,12 @@ classes["xnor-gate-combinator"] = {
             table.insert(slots, {signal = p2.signal, count = 0, index = 2})
             c2 = get_count(control, p2.signal)
           end
-          if (c1 == c2) then
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 3})
-          else
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3})
+          if p3.signal.name then
+            if (c1 == c2) then
+              table.insert(slots, {signal = p3.signal, count = 1, index = 3})
+            else
+              table.insert(slots, {signal = p3.signal, count = 0, index = 3})
+            end
           end
           control.parameters = {
             parameters = slots
@@ -513,7 +525,7 @@ classes["xor-gate-combinator"] = {
     if control then
       local params = control.parameters.parameters
       if params[3].signal.name then
-        local p1,p2 = params[1], params[2]
+        local p1,p2,p3 = params[1], params[2], params[3]
         if control.enabled then
           local slots = {}
           local c1,c2 = 0,0
@@ -525,10 +537,12 @@ classes["xor-gate-combinator"] = {
             table.insert(slots, {signal = p2.signal, count = 0, index = 2})
             c2 = get_count(control, p2.signal)
           end
-          if (c1 == c2) then
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3})
-          else
-            table.insert(slots, {signal = {type = "virtual", name = "output-signal"}, count = 1, index = 3})
+          if p3.signal.name then
+            if (c1 == c2) then
+              table.insert(slots, {signal = p3.signal, count = 0, index = 3})
+            else
+              table.insert(slots, {signal = p3.signal, count = 1, index = 3})
+            end
           end
           control.parameters = {
             parameters = slots
