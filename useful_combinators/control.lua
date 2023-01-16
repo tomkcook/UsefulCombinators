@@ -13,7 +13,7 @@ classes["timer-combinator"] = {
     if control then
       local params = control.parameters.parameters
       if params[1] and params[1].count then
-        local count,interval,mod,reset = params[1].count or 1, params[2].count or 1, params[3].count or 1, params[4].count or -1
+        local count,interval,mod,reset = params[1].count or 1, params[2].count or 1, params[3].count or 1, params[4].count or 0
         if control.enabled then
           if (mod < 1) then mod = 1 end
           if (mod > 15) then mod = 15 end
@@ -61,27 +61,30 @@ classes["counting-combinator"] = {
     if control then
       local params = control.parameters.parameters
       if params[1] and params[1].count then
-        local count,reset = params[1].count or 1, params[2].count or -1
+        local count,reset = params[1].count or 1, params[2].count or 0
         if control.enabled then
-        if (reset <= 0) then reset = -1 end
-          local out = 0
-          if reset > 0 and count >= reset then
-            count = 0
-            out = 1
-          end
-          control.parameters = {
-            parameters = {
-              {signal = {type = "virtual", name = "counting-signal"}, count = count + get_count(control, {type = "virtual", name = "plus-one-signal"}), index = 1},
-              {signal = {type = "virtual", name = "reset-signal"}, count = reset, index = 2},
-              {signal = {type = "virtual", name = "output-signal"}, count = out, index = 3}
-            }
+        if (reset <= 0) then reset = 0 end
+        if count < 0 then count = 0 end
+        local out = 0
+        if reset > 0 and count >= reset then
+          count = 0
+          out = 1
+        end
+        count = count - get_count(control, {type = "virtual", name = "minus-one-signal"})
+        count = count + get_count(control, {type = "virtual", name = "plus-one-signal"})
+        control.parameters = {
+          parameters = {
+            {signal = {type = "virtual", name = "counting-signal"}, count = count, index = 1},
+            {signal = {type = "virtual", name = "reset-signal"}, count = reset, index = 2},
+            {signal = {type = "virtual", name = "output-signal"}, count = out, index = 3}
           }
+        }
         end
       else
         control.parameters = {
           parameters = {
             {signal = {type = "virtual", name = "counting-signal"}, count = 1, index = 1},
-            {signal = {type = "virtual", name = "reset-signal"}, count = -1, index = 2},
+            {signal = {type = "virtual", name = "reset-signal"}, count = 0, index = 2},
             {signal = {type = "virtual", name = "output-signal"}, count = 0, index = 3}
           }
         }
