@@ -1,5 +1,5 @@
 data:extend(
-{ 
+{
   {
     type = "item-with-tags",
     name = "timer-combinator",
@@ -276,5 +276,16 @@ data:extend(
     order = "b[statistic]",
     stack_size= 50,
   },
+  {
+    type = "item-with-tags",
+    name = "multiplex-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/multiplex-combinator.png",
+    icon_size = 32,
+    flags = {},
+    group = "useful-combinators",
+    subgroup = "main",
+    place_result = "multiplex-combinator",
+    order = "f[multiplex]",
+    stack_size = 50,
   }
-}) 
+})

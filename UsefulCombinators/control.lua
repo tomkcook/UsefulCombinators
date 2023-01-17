@@ -31,7 +31,9 @@ classes["timer-combinator"] = {
   end,
 	on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -44,7 +46,7 @@ classes["timer-combinator"] = {
     }
   end,
   on_destroy = function(meta, item)
-    
+
     item.set_tag("uc_meta", meta)
   end,
   on_tick = function(object)
@@ -102,7 +104,9 @@ classes["counting-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -112,7 +116,10 @@ classes["counting-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -190,7 +197,9 @@ classes["random-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
   return {
     meta = {
@@ -207,7 +216,10 @@ classes["random-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -272,7 +284,9 @@ classes["min-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -287,7 +301,10 @@ classes["min-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -358,7 +375,9 @@ classes["max-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -370,11 +389,14 @@ classes["max-combinator"] = {
           {signal = {type = "virtual"}},
           {signal = {type = "virtual"}}
         },
-        
+
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -461,7 +483,9 @@ classes["and-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -474,7 +498,10 @@ classes["and-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -559,7 +586,9 @@ classes["nand-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -572,7 +601,10 @@ classes["nand-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -657,7 +689,9 @@ classes["nor-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -670,7 +704,10 @@ classes["nor-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -745,7 +782,9 @@ classes["not-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -757,7 +796,10 @@ classes["not-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -839,7 +881,9 @@ classes["or-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -852,7 +896,10 @@ classes["or-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -937,7 +984,9 @@ classes["xnor-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -950,7 +999,10 @@ classes["xnor-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1035,7 +1087,9 @@ classes["xor-gate-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1048,7 +1102,10 @@ classes["xor-gate-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1126,7 +1183,9 @@ classes["converter-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1150,7 +1209,10 @@ classes["converter-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1222,7 +1284,9 @@ classes["detector-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1232,7 +1296,10 @@ classes["detector-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1298,7 +1365,9 @@ classes["sensor-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1308,7 +1377,10 @@ classes["sensor-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1375,7 +1447,9 @@ classes["railway-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1384,7 +1458,10 @@ classes["railway-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1436,7 +1513,7 @@ classes["color-combinator"] = {
       for i = 1,6 do
         if i == 1 then
           layout.add{type = "label", caption = "Red: (?)", tooltip = {"color-combinator.red"}}
-          if params[i].signal and params[i].signal.name then  
+          if params[i].signal and params[i].signal.name then
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
           else
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal"}
@@ -1445,7 +1522,7 @@ classes["color-combinator"] = {
           layout.add{type = "textfield", name = "count"..i, style = "uc_text", text = params[i].count or 0}
         elseif i == 2 then
           layout.add{type = "label", caption = "Green: (?)", tooltip = {"color-combinator.green"}}
-          if params[i].signal and params[i].signal.name then  
+          if params[i].signal and params[i].signal.name then
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
           else
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal"}
@@ -1454,7 +1531,7 @@ classes["color-combinator"] = {
           layout.add{type = "textfield", name = "count"..i, style = "uc_text", text = params[i].count or i}
         elseif i == 3 then
           layout.add{type = "label", caption = "Blue: (?)", tooltip = {"color-combinator.blue"}}
-          if params[i].signal and params[i].signal.name then  
+          if params[i].signal and params[i].signal.name then
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
           else
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal"}
@@ -1463,7 +1540,7 @@ classes["color-combinator"] = {
           layout.add{type = "textfield", name = "count"..i, style = "uc_text", text = params[i].count or i}
         elseif i == 4 then
           layout.add{type = "label", caption = "Yellow: (?)", tooltip = {"color-combinator.yellow"}}
-          if params[i].signal and params[i].signal.name then  
+          if params[i].signal and params[i].signal.name then
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
           else
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal"}
@@ -1472,7 +1549,7 @@ classes["color-combinator"] = {
           layout.add{type = "textfield", name = "count"..i, style = "uc_text", text = params[i].count or i}
         elseif i == 5 then
           layout.add{type = "label", caption = "Magenta: (?)", tooltip = {"color-combinator.magenta"}}
-          if params[i].signal and params[i].signal.name then  
+          if params[i].signal and params[i].signal.name then
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
           else
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal"}
@@ -1481,7 +1558,7 @@ classes["color-combinator"] = {
           layout.add{type = "textfield", name = "count"..i, style = "uc_text", text = params[i].count or i}
         elseif i == 6 then
           layout.add{type = "label", caption = "Cyan: (?)", tooltip = {"color-combinator.cyan"}}
-          if params[i].signal and params[i].signal.name then  
+          if params[i].signal and params[i].signal.name then
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal", signal = params[i].signal}
           else
             layout.add{type = "choose-elem-button", name = "signal"..i, elem_type = "signal"}
@@ -1495,8 +1572,10 @@ classes["color-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
-		end 
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
+		end
     return {
       meta = {
         entity = entity,
@@ -1511,7 +1590,10 @@ classes["color-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1587,7 +1669,7 @@ classes["emitter-combinator"] = {
       local uc = gui.add{type = "frame", name = "uc", caption = "Emitter Combinator"}
       local layout = uc.add{type = "table", name = "emitter-combinator", column_count = 8}
       layout.add{type = "label", caption = "Signal: (?)", tooltip = {"emitter-combinator.signal"}}
-      if params[1] and params[1].signal then  
+      if params[1] and params[1].signal then
         layout.add{type = "choose-elem-button", name = "signal1", elem_type = "signal", signal = params[1].signal}
       else
         layout.add{type = "choose-elem-button", name = "signal1", elem_type = "signal"}
@@ -1605,7 +1687,9 @@ classes["emitter-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1614,7 +1698,10 @@ classes["emitter-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1651,7 +1738,9 @@ classes["receiver-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1660,7 +1749,10 @@ classes["receiver-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1714,7 +1806,9 @@ classes["power-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1735,7 +1829,7 @@ classes["power-combinator"] = {
     local control = object.meta.entity.get_control_behavior()
     if control then
       local params = object.meta.params
-      if params[1].signal.name then 
+      if params[1].signal.name then
         local ticks = object.meta.ticks
         if ticks < 1 then
           ticks = 1
@@ -1839,7 +1933,9 @@ classes["daytime-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1849,7 +1945,9 @@ classes["daytime-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)    item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1904,7 +2002,9 @@ classes["pollution-combinator"] = {
   end,
   on_place = function(entity, item)
 		if item ~= nil and item.get_tag("uc_meta") ~= nil then
-			local tag = item.get_tag("uc_meta")      tag.meta.entity = entity      return { meta = tag.meta }
+			local tag = item.get_tag("uc_meta")
+      tag.meta.entity = entity
+      return { meta = tag.meta }
 		end
     return {
       meta = {
@@ -1913,7 +2013,9 @@ classes["pollution-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)    item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -1997,7 +2099,10 @@ classes["statistic-combinator"] = {
       }
     }
   end,
-  on_destroy = function(meta, item)        item.set_tag("uc_meta", meta)  end,
+  on_destroy = function(meta, item)
+
+    item.set_tag("uc_meta", meta)
+  end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
     if control then
@@ -2059,6 +2164,89 @@ classes["statistic-combinator"] = {
   end
 }
 
+classes["multiplex-combinator"] = {
+  on_click = function(player, object)
+    local gui = player.gui.center
+    local params = {}
+    if gui["uc"]["multiplex-combinator"]["signal"].elem_value then
+      object.meta.signal = {name = gui["uc"]["multiplex-combinator"]["signal"].elem_value, type = "item"}
+    else
+      object.meta.signal = {type = "item"}
+    end
+  end,
+  on_key = function(player, object)
+    if not (player.gui.center["uc"]) then
+      local gui = player.gui.center
+      local meta = object.meta
+      local uc = gui.add{type = "frame", name = "uc", caption = "Statistic Combinator"}
+      local layout = uc.add{type = "table", name = "statistic-combinator", column_count = 8}
+      layout.add{type = "label", caption = "Selection signal", tooltip={"multiplex-combinator.signal"}}
+      if meta.signal and meta.signal.name then
+        layout.add{type = "choose-elem-button", name = "signal", elem_type = "signal", signal = meta.signal}
+      else
+        layout.add{type = "choose-elem-button", name = "signal", elem_type = "signal"}
+      end
+    end
+  end,
+  on_place = function(entity, item)
+		if item ~= nil and item.get_tag("uc_meta") ~= nil then
+			local tag = item.get_tag("uc_meta")
+			tag.meta.entity = entity
+			return { meta = tag.meta }
+		end
+    return {
+      meta = {
+        entity = entity,
+        params = {
+          signal = {type = "item"},
+        },
+        --ticks = 300,
+      }
+    }
+  end,
+  on_destroy = function(meta, item)
+    item.set_tag("uc_meta", meta)
+  end,
+  on_tick = function(object)
+    local control = object.meta.entity.get_control_behavior()
+    if control then
+      if control.enabled then
+        local signal = object.meta.signal
+        if ((game.tick % 60) == 0) and signal then
+          local control_count = get_count(control, signal)
+          local signals = {}
+          for k, v in pairs(control.get_circuit_network(defines.wire_type.red)).signals do
+            signals[k] = v
+          end
+          for k, v in pairs(control.get_circuit_network(defines.wire_type.green)).signals do
+            signals[k] = (signals[k] or 0) + v
+          end
+          local sorted_signals = {}
+          for k, v in pairs(signals) do
+            insert(sorted_signals, {k, v})
+          end
+          table.sort(sorted_signals, function (a,b) return a[2] < b[2]; end)
+          local parameters = {}
+          for i, n in ipairs(sorted_signals) do
+            table.insert(parameters, {signal = n[0]})
+          end
+          control.parameters = parameters
+        end
+      end
+    else
+      control.parameters = {
+        parameters = {
+          {signal = {type = "item", name = "coal"}, count = 1, index = 1},
+          {signal = {type = "item"}, count = 0, index = 2},
+          {signal = {type = "item"}, count = 0, index = 3},
+          {signal = {type = "item"}, count = 0, index = 4},
+          {signal = {type = "item"}, count = 0, index = 5}
+        }
+      }
+    end
+  end
+}
+
 function get_count(control, signal)
   if not signal then return 0 end
   local red = control.get_circuit_network(defines.wire_type.red)
@@ -2067,7 +2255,7 @@ function get_count(control, signal)
   if red then
     val = red.get_signal(signal) or 0
   end
-  if green then 
+  if green then
     val = val + (green.get_signal(signal) or 0)
   end
   return val
@@ -2165,7 +2353,7 @@ function configuration_changed(cfg)
         end
       end
     end
-  end 
+  end
 end
 
 function on_key(event)

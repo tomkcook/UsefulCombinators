@@ -49,7 +49,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -172,7 +172,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -295,7 +295,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -418,7 +418,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 5,
-    
+
     sprites =
     {
       north =
@@ -541,7 +541,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -664,7 +664,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -787,7 +787,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -910,7 +910,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -1033,7 +1033,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -1156,7 +1156,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -1279,7 +1279,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -1402,7 +1402,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -1525,7 +1525,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -1648,7 +1648,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -1771,7 +1771,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -1894,7 +1894,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -2017,7 +2017,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 6,
-    
+
     sprites =
     {
       north =
@@ -2140,7 +2140,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 0,
-    
+
     sprites =
     {
       north =
@@ -2263,7 +2263,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 5,
-    
+
     sprites =
     {
       north =
@@ -2386,7 +2386,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 4,
-    
+
     sprites =
     {
       north =
@@ -2509,7 +2509,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 3,
-    
+
     sprites =
     {
       north =
@@ -2632,7 +2632,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 1,
-    
+
     sprites =
     {
       north =
@@ -2742,40 +2742,60 @@ data:extend({
     circuit_wire_max_distance = 7.5
   },
   {
+    type = "constant-combinator",
+    name = "multiplex-combinator",
+    icon = "__UsefulCombinators__/graphics/icons/multiplex-combinator.png",
+    icon_size = 32,
+		flags = {"placeable-neutral", "player-creation"},
+    minable = {hardness = 0.2, mining_time = 0.5, result = "statistic-combinator"},
+    max_health = 50,
+    corpse = "small-remnants",
+
+    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
+    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
+
+    item_slot_count = 1,
+
+    sprites =
     {
       north =
       {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
+        filename = "__UsefulCombinators__/graphics/entity/combinator/multiplex-combinator.png",
+        x = 116,
+        width = 58,
+        height = 52,
         frame_count = 1,
-        shift = {0.296875, -0.40625},
+        shift = {0.140625, 0.140625},
       },
       east =
       {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
+        filename = "__UsefulCombinators__/graphics/entity/combinator/multiplex-combinator.png",
+        width = 58,
+        height = 52,
         frame_count = 1,
-        shift = {0.25, -0.03125},
+        shift = {0.140625, 0.140625},
       },
       south =
       {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
+        filename = "__UsefulCombinators__/graphics/entity/combinator/multiplex-combinator.png",
+        x = 174,
+        width = 58,
+        height = 52,
         frame_count = 1,
-        shift = {-0.296875, -0.078125},
+        shift = {0.140625, 0.140625},
       },
       west =
       {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
+        filename = "__UsefulCombinators__/graphics/entity/combinator/multiplex-combinator.png",
+        x = 58,
+        width = 58,
+        height = 52,
         frame_count = 1,
-        shift = {-0.21875, -0.46875},
+        shift = {0.140625, 0.140625},
       }
     },
+
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -2858,7 +2878,7 @@ data:extend({
     selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
 
     item_slot_count = 5,
-    
+
     sprites =
     {
       north =

@@ -251,5 +251,16 @@ data:extend({
       {"counting-combinator", 1}
     },
     result = "statistic-combinator"
-  }
+  },
+  {
+    type = "recipe",
+    name = "multiplex-combinator",
+    enabled = "false",
+    ingredients =
+    {
+      {"arithmetic-combinator", 1},
+      {"decider-combinator", 1}
+    },
+    result = "multiplex-combinator"
+  },
 })
