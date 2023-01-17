@@ -1,3 +1,39 @@
+local _activity_led_sprites =
+{
+  north =
+  {
+    filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
+    width = 32,
+    height = 6,
+    frame_count = 1,
+    shift = {0.296875, -0.40625},
+  },
+  east =
+  {
+    filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
+    width = 32,
+    height = 8,
+    frame_count = 1,
+    shift = {0.25, -0.03125},
+  },
+  south =
+  {
+    filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
+    width = 32,
+    height = 8,
+    frame_count = 1,
+    shift = {-0.296875, -0.078125},
+  },
+  west =
+  {
+    filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
+    width = 32,
+    height = 8,
+    frame_count = 1,
+    shift = {-0.21875, -0.46875},
+  }
+}
+
 data:extend({
   {
     type = "constant-combinator",
@@ -53,41 +89,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -210,41 +212,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -367,41 +335,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -524,41 +458,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -681,41 +581,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -838,41 +704,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -995,41 +827,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -1152,41 +950,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -1309,41 +1073,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -1466,41 +1196,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -1623,41 +1319,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -1780,41 +1442,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -1937,41 +1565,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -2094,41 +1688,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -2251,41 +1811,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -2408,41 +1934,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -2565,41 +2057,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -2722,41 +2180,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -2879,41 +2303,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -3036,41 +2426,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -3193,41 +2549,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
@@ -3350,7 +2672,76 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
+    activity_led_sprites = _activity_led_sprites,
+
+    activity_led_light =
+    {
+      intensity = 0.8,
+      size = 1,
+    },
+
+    activity_led_light_offsets =
+    {
+      {0.296875, -0.40625},
+      {0.25, -0.03125},
+      {-0.296875, -0.078125},
+      {-0.21875, -0.46875}
+    },
+
+    circuit_wire_connection_points =
+    {
+      {
+        shadow =
+        {
+          red = {0.15625, -0.28125},
+          green = {0.65625, -0.25}
+        },
+        wire =
+        {
+          red = {-0.28125, -0.5625},
+          green = {0.21875, -0.5625},
+        }
+      },
+      {
+        shadow =
+        {
+          red = {0.75, -0.15625},
+          green = {0.75, 0.25},
+        },
+        wire =
+        {
+          red = {0.46875, -0.5},
+          green = {0.46875, -0.09375},
+        }
+      },
+      {
+        shadow =
+        {
+          red = {0.75, 0.5625},
+          green = {0.21875, 0.5625}
+        },
+        wire =
+        {
+          red = {0.28125, 0.15625},
+          green = {-0.21875, 0.15625}
+        }
+      },
+      {
+        shadow =
+        {
+          red = {-0.03125, 0.28125},
+          green = {-0.03125, -0.125},
+        },
+        wire =
+        {
+          red = {-0.46875, 0},
+          green = {-0.46875, -0.40625},
+        }
+      }
+    },
+    circuit_wire_max_distance = 7.5
+  },
+  {
     {
       north =
       {
@@ -3507,41 +2898,7 @@ data:extend({
       }
     },
 
-    activity_led_sprites =
-    {
-      north =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-N.png",
-        width = 11,
-        height = 10,
-        frame_count = 1,
-        shift = {0.296875, -0.40625},
-      },
-      east =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-E.png",
-        width = 14,
-        height = 12,
-        frame_count = 1,
-        shift = {0.25, -0.03125},
-      },
-      south =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-S.png",
-        width = 11,
-        height = 11,
-        frame_count = 1,
-        shift = {-0.296875, -0.078125},
-      },
-      west =
-      {
-        filename = "__base__/graphics/entity/combinator/activity-leds/constant-combinator-LED-W.png",
-        width = 12,
-        height = 12,
-        frame_count = 1,
-        shift = {-0.21875, -0.46875},
-      }
-    },
+    activity_led_sprites = _activity_led_sprites,
 
     activity_led_light =
     {
