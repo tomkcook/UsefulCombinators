@@ -97,6 +97,10 @@ data:extend({
       {
         type = "unlock-recipe",
         recipe = "statistic-combinator"
+      },
+      {
+        type = "unlock-recipe",
+        recipe = "multiplex-combinator"
       }
     },
     prerequisites = {"circuit-network"},

@@ -2169,23 +2169,30 @@ classes["multiplex-combinator"] = {
     local gui = player.gui.center
     local params = {}
     if gui["uc"]["multiplex-combinator"]["signal"].elem_value then
-      object.meta.signal = {name = gui["uc"]["multiplex-combinator"]["signal"].elem_value, type = "item"}
+      object.meta.signal = gui["uc"]["multiplex-combinator"]["signal"].elem_value
     else
       object.meta.signal = {type = "item"}
     end
+    object.meta.scaled = gui["uc"]["multiplex-combinator"]["scaled"].state
+    object.meta.items_only = gui["uc"]["multiplex-combinator"]["items_only"].state
   end,
   on_key = function(player, object)
     if not (player.gui.center["uc"]) then
       local gui = player.gui.center
       local meta = object.meta
-      local uc = gui.add{type = "frame", name = "uc", caption = "Statistic Combinator"}
-      local layout = uc.add{type = "table", name = "statistic-combinator", column_count = 8}
+      local uc = gui.add{type = "frame", name = "uc", caption = "Multiplex Combinator"}
+      local layout = uc.add{type = "table", name = "multiplex-combinator", column_count = 2}
       layout.add{type = "label", caption = "Selection signal", tooltip={"multiplex-combinator.signal"}}
       if meta.signal and meta.signal.name then
         layout.add{type = "choose-elem-button", name = "signal", elem_type = "signal", signal = meta.signal}
       else
         layout.add{type = "choose-elem-button", name = "signal", elem_type = "signal"}
       end
+      layout.add{type="label", caption="Scale inputs by values"}
+      layout.add{type="checkbox", name="scaled", state=meta.scaled}
+      layout.add{type="label", caption="Only items"}
+      layout.add{type="checkbox", name="items_only", state=meta.items_only}
+      layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
   on_place = function(entity, item)
@@ -2209,48 +2216,65 @@ classes["multiplex-combinator"] = {
   end,
   on_tick = function(object)
     local control = object.meta.entity.get_control_behavior()
-    if control then
-      if control.enabled then
-        local signal = object.meta.signal
-        if ((game.tick % 60) == 0) and signal then
-          local control_count = get_count(control, signal)
-          local signals = {}
-          for k, v in pairs(control.get_circuit_network(defines.wire_type.red)).signals do
-            signals[k] = v
+    local input_signals = object.meta.entity.get_merged_signals(defines.circuit_connector_id.combinator_input)
+    if input_signals and control and object.meta.signal then
+      local control_signal = nil
+      local sorted_signals = {}
+      for k, v in pairs(input_signals) do
+        if v.signal.name == object.meta.signal.name then
+          control_signal = v
+        else
+          if not object.meta.items_only or v.signal.type == "item" then
+            if object.meta.scaled then
+              for ii = 1, v.count, 1 do
+                table.insert(sorted_signals, {v.signal, v.count})
+              end
+            else
+              table.insert(sorted_signals, {v.signal, v.count})
+            end
           end
-          for k, v in pairs(control.get_circuit_network(defines.wire_type.green)).signals do
-            signals[k] = (signals[k] or 0) + v
-          end
-          local sorted_signals = {}
-          for k, v in pairs(signals) do
-            insert(sorted_signals, {k, v})
-          end
-          table.sort(sorted_signals, function (a,b) return a[2] < b[2]; end)
-          local parameters = {}
-          for i, n in ipairs(sorted_signals) do
-            table.insert(parameters, {signal = n[0]})
-          end
-          control.parameters = parameters
         end
       end
-    else
+
+      if object.meta.scaled == nil then
+        object.meta.scaled = true
+      end
+
+      if object.meta.items_only == nil then
+        object.meta.items_only = true
+      end
+
+      if not control_signal then
+        control.parameters = {}
+        return
+      end
+
+      table.sort(sorted_signals, function (a,b) return a[2] < b[2]; end)
+      local total_count = #sorted_signals
+      if total_count == 0 then
+        control.parameters = {}
+        return
+      end
+      local control_value = math.fmod(control_signal.count, total_count) + 1
+      local output_signal = sorted_signals[control_value][1]
+      local output_count = sorted_signals[control_value][2]
+      log(string.format("Outputting signal %s at %d", serpent.block(output_signal), output_count))
+      log(string.format("Control behavior parameters %s", serpent.block(control.parameters)))
       control.parameters = {
-        parameters = {
-          {signal = {type = "item", name = "coal"}, count = 1, index = 1},
-          {signal = {type = "item"}, count = 0, index = 2},
-          {signal = {type = "item"}, count = 0, index = 3},
-          {signal = {type = "item"}, count = 0, index = 4},
-          {signal = {type = "item"}, count = 0, index = 5}
-        }
+        first_constant = output_count,
+        second_constant = 1,
+        output_signal = output_signal
       }
+    else
+      control.parameters = { parameters = {} }
     end
   end
 }
 
 function get_count(control, signal)
   if not signal then return 0 end
-  local red = control.get_circuit_network(defines.wire_type.red)
-  local green = control.get_circuit_network(defines.wire_type.green)
+  local red = control.get_circuit_network(defines.wire_type.red, defines.circuit_connector_id.combinator_input)
+  local green = control.get_circuit_network(defines.wire_type.green, defines.circuit_connector_id.combinator_input)
   local val = 0
   if red then
     val = red.get_signal(signal) or 0

@@ -34,6 +34,17 @@ local _activity_led_sprites =
   }
 }
 
+local mc = table.deepcopy(data.raw['arithmetic-combinator']['arithmetic-combinator'])
+mc.name = "multiplex-combinator"
+mc.minable.result = mc.name
+mc.energy_source = { type = 'void' }
+mc.energy_usage_per_tick = '1W'
+mc.item_slot_count = 1
+for direction, definition in pairs(mc.multiply_symbol_sprites) do
+	definition.hr_version.filename = '__UsefulCombinators__/graphics/entity/combinator/multiplex-combinator.png'
+	mc.multiply_symbol_sprites[direction] = definition.hr_version
+end
+
 data:extend({
   {
     type = "constant-combinator",
@@ -2743,129 +2754,6 @@ data:extend({
   },
   {
     type = "constant-combinator",
-    name = "multiplex-combinator",
-    icon = "__UsefulCombinators__/graphics/icons/multiplex-combinator.png",
-    icon_size = 32,
-		flags = {"placeable-neutral", "player-creation"},
-    minable = {hardness = 0.2, mining_time = 0.5, result = "statistic-combinator"},
-    max_health = 50,
-    corpse = "small-remnants",
-
-    collision_box = {{-0.35, -0.35}, {0.35, 0.35}},
-    selection_box = {{-0.5, -0.5}, {0.5, 0.5}},
-
-    item_slot_count = 1,
-
-    sprites =
-    {
-      north =
-      {
-        filename = "__UsefulCombinators__/graphics/entity/combinator/multiplex-combinator.png",
-        x = 116,
-        width = 58,
-        height = 52,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      },
-      east =
-      {
-        filename = "__UsefulCombinators__/graphics/entity/combinator/multiplex-combinator.png",
-        width = 58,
-        height = 52,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      },
-      south =
-      {
-        filename = "__UsefulCombinators__/graphics/entity/combinator/multiplex-combinator.png",
-        x = 174,
-        width = 58,
-        height = 52,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      },
-      west =
-      {
-        filename = "__UsefulCombinators__/graphics/entity/combinator/multiplex-combinator.png",
-        x = 58,
-        width = 58,
-        height = 52,
-        frame_count = 1,
-        shift = {0.140625, 0.140625},
-      }
-    },
-
-    activity_led_sprites = _activity_led_sprites,
-
-    activity_led_light =
-    {
-      intensity = 0.8,
-      size = 1,
-    },
-
-    activity_led_light_offsets =
-    {
-      {0.296875, -0.40625},
-      {0.25, -0.03125},
-      {-0.296875, -0.078125},
-      {-0.21875, -0.46875}
-    },
-
-    circuit_wire_connection_points =
-    {
-      {
-        shadow =
-        {
-          red = {0.15625, -0.28125},
-          green = {0.65625, -0.25}
-        },
-        wire =
-        {
-          red = {-0.28125, -0.5625},
-          green = {0.21875, -0.5625},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.75, -0.15625},
-          green = {0.75, 0.25},
-        },
-        wire =
-        {
-          red = {0.46875, -0.5},
-          green = {0.46875, -0.09375},
-        }
-      },
-      {
-        shadow =
-        {
-          red = {0.75, 0.5625},
-          green = {0.21875, 0.5625}
-        },
-        wire =
-        {
-          red = {0.28125, 0.15625},
-          green = {-0.21875, 0.15625}
-        }
-      },
-      {
-        shadow =
-        {
-          red = {-0.03125, 0.28125},
-          green = {-0.03125, -0.125},
-        },
-        wire =
-        {
-          red = {-0.46875, 0},
-          green = {-0.46875, -0.40625},
-        }
-      }
-    },
-    circuit_wire_max_distance = 7.5
-  },
-  {
-    type = "constant-combinator",
     name = "statistic-combinator",
     icon = "__UsefulCombinators__/graphics/icons/statistic-combinator.png",
     icon_size = 32,
@@ -2986,5 +2874,6 @@ data:extend({
       }
     },
     circuit_wire_max_distance = 7.5
-  }
+  },
+  mc
 })
