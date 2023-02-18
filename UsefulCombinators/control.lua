@@ -2189,9 +2189,9 @@ classes["multiplex-combinator"] = {
         layout.add{type = "choose-elem-button", name = "signal", elem_type = "signal"}
       end
       layout.add{type="label", caption="Scale inputs by values"}
-      layout.add{type="checkbox", name="scaled", state=meta.scaled}
+      layout.add{type="checkbox", name="scaled", state=meta.scaled or false}
       layout.add{type="label", caption="Only items"}
-      layout.add{type="checkbox", name="items_only", state=meta.items_only}
+      layout.add{type="checkbox", name="items_only", state=meta.items_only or false}
       layout.add{type = "button", name = "uc-exit", caption = "Ok"}
     end
   end,
@@ -2258,8 +2258,6 @@ classes["multiplex-combinator"] = {
       local control_value = math.fmod(control_signal.count, total_count) + 1
       local output_signal = sorted_signals[control_value][1]
       local output_count = sorted_signals[control_value][2]
-      log(string.format("Outputting signal %s at %d", serpent.block(output_signal), output_count))
-      log(string.format("Control behavior parameters %s", serpent.block(control.parameters)))
       control.parameters = {
         first_constant = output_count,
         second_constant = 1,
